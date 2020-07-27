@@ -1,0 +1,14 @@
+    create group
+    get all groups in database
+    edit a group
+    delete a group
+
+create word for a group
+get words related to a specific group
+delete a word
+edit a word
+get all information about word
+    title
+    definitions
+    example for each definitions
+
