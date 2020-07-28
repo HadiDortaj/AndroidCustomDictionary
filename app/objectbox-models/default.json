@@ -20,12 +20,119 @@
           "type": 9
         }
       ],
+      "relations": [
+        {
+          "id": "1:5428707962131371268",
+          "name": "relatedWords",
+          "targetId": "5:332817132299591884"
+        }
+      ]
+    },
+    {
+      "id": "2:6055213688382490493",
+      "lastPropertyId": "3:8074932795238633012",
+      "name": "Definition",
+      "properties": [
+        {
+          "id": "1:718568340819117625",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5881531576143413287",
+          "name": "definitionText",
+          "type": 9
+        },
+        {
+          "id": "3:8074932795238633012",
+          "name": "typeId",
+          "indexId": "1:9062433521136900891",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Type"
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:8052948173692422710",
+          "name": "examples",
+          "targetId": "3:2184795015195075841"
+        }
+      ]
+    },
+    {
+      "id": "3:2184795015195075841",
+      "lastPropertyId": "3:2494300826112527426",
+      "name": "Example",
+      "properties": [
+        {
+          "id": "1:1061528885510207018",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6809397879737816414",
+          "name": "originalExample",
+          "type": 9
+        },
+        {
+          "id": "3:2494300826112527426",
+          "name": "translationOrExtraInformation",
+          "type": 9
+        }
+      ],
       "relations": []
+    },
+    {
+      "id": "4:4384392742334871662",
+      "lastPropertyId": "2:3426463059402401094",
+      "name": "Type",
+      "properties": [
+        {
+          "id": "1:4300334790735820030",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3426463059402401094",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:332817132299591884",
+      "lastPropertyId": "2:6160447766753318867",
+      "name": "Word",
+      "properties": [
+        {
+          "id": "1:506607837298696187",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6160447766753318867",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "3:1356428672999106546",
+          "name": "definitions",
+          "targetId": "2:6055213688382490493"
+        }
+      ]
     }
   ],
-  "lastEntityId": "1:8138279277436209384",
-  "lastIndexId": "0:0",
-  "lastRelationId": "0:0",
+  "lastEntityId": "5:332817132299591884",
+  "lastIndexId": "1:9062433521136900891",
+  "lastRelationId": "3:1356428672999106546",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
