@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.model
+package com.hadi.android.custom.dictionary.model.entity
 
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id

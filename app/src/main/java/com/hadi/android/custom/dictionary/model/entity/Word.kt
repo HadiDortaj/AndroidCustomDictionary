@@ -1,5 +1,6 @@
-package com.hadi.android.custom.dictionary.model
+package com.hadi.android.custom.dictionary.model.entity
 
+import com.hadi.android.custom.dictionary.model.entity.Definition
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.relation.ToMany
