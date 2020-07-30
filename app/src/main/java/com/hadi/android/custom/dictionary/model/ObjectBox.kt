@@ -5,7 +5,7 @@ import com.hadi.android.custom.dictionary.model.entity.MyObjectBox
 import io.objectbox.BoxStore
 
 object ObjectBox {
-    const val DATABASE_NAME = "database"
+    private const val DATABASE_NAME = "database"
     lateinit var boxStore: BoxStore
         private set
 

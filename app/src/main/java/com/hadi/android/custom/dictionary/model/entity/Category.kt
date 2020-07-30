@@ -8,6 +8,7 @@ import io.objectbox.relation.ToMany
 data class Category(
     @Id
     var id: Long = 0,
-    var title: String,
-    var relatedWords: ToMany<Word>
-)
+    var title: String
+){
+    lateinit var relatedWords: ToMany<Word>
+}
