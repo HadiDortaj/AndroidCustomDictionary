@@ -9,7 +9,8 @@ import io.objectbox.relation.ToOne
 data class Definition(
     @Id
     var id: Long = 0,
-    var definitionText: String,
-    var type: ToOne<Type>,
-    var examples: ToMany<Example>
-)
+    var definitionText: String
+){
+    lateinit var type: ToOne<Type>
+    lateinit var examples: ToMany<Example>
+}
