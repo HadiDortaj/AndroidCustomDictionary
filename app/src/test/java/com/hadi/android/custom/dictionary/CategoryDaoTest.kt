@@ -5,7 +5,6 @@ import com.hadi.android.custom.dictionary.model.entity.Category
 import org.junit.After
 import org.junit.Test
 import org.junit.Assert.*
-import org.junit.Before
 
 class CategoryDaoTest {
 
@@ -19,7 +18,7 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun category_is_successfully_inserted() {
+    fun insert_CategoryWithTitle_CategoryInserted() {
         val title = "Computer"
         val category = Category(title = title)
         val id: Long = categoryDao.insert(category)
@@ -29,7 +28,7 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun category_is_successfully_updated() {
+    fun update_AlreadyExistedCategoryWithNewTitle_CategoryUpdated() {
         val oldTitle = "Computer"
         val oldCategory = Category(title = oldTitle)
         val id: Long = categoryDao.insert(oldCategory)
@@ -44,7 +43,7 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun category_is_successfully_removed(){
+    fun remove_CategoryId_CategoryRemoved(){
         val title = "Computer"
         val category = Category(title = title)
         val id: Long = categoryDao.insert(category)
@@ -55,7 +54,7 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun getting_all_categories_is_successfully_done(){
+    fun getAllCategories_NoParameters_AllCategoriesFetched(){
         val category1 = Category(title = "First")
         val category2 = Category(title = "Second")
         assertEquals(0, categoryDao.getAllCategories().size)
@@ -65,7 +64,7 @@ class CategoryDaoTest {
     }
 
     @Test
-    fun getting_category_is_successfully_done(){
+    fun getCategory_CategoryId_CategoryFetched(){
         val category = Category(title = "First")
         assertNull(categoryDao.getCategory(1))
         categoryDao.insert(category)
