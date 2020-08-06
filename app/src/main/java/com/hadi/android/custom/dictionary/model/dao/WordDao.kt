@@ -1,7 +1,7 @@
 package com.hadi.android.custom.dictionary.model.dao
 
-import com.hadi.android.custom.dictionary.model.entity.Definition
-import com.hadi.android.custom.dictionary.model.entity.Word
+import com.hadi.android.custom.dictionary.doman.Definition
+import com.hadi.android.custom.dictionary.doman.Word
 import io.objectbox.Box
 
 class WordDao(private val box: Box<Word>, private val definitionDao: Box<Definition>) {

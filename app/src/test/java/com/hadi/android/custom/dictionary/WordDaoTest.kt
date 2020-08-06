@@ -1,7 +1,10 @@
 package com.hadi.android.custom.dictionary
 
+import com.hadi.android.custom.dictionary.doman.Definition
+import com.hadi.android.custom.dictionary.doman.Example
+import com.hadi.android.custom.dictionary.doman.Type
+import com.hadi.android.custom.dictionary.doman.Word
 import com.hadi.android.custom.dictionary.model.dao.WordDao
-import com.hadi.android.custom.dictionary.model.entity.*
 import org.junit.After
 import org.junit.Test
 import org.junit.Assert.*
@@ -10,7 +13,8 @@ class WordDaoTest {
 
     private val testDatabase = TestObjectBoxDatabase()
     private var wordDao: WordDao =
-        WordDao(testDatabase.boxStore.boxFor(Word::class.java), testDatabase.boxStore.boxFor(Definition::class.java))
+        WordDao(testDatabase.boxStore.boxFor(Word::class.java), testDatabase.boxStore.boxFor(
+            Definition::class.java))
 
     @After
     fun tearDown() {
@@ -36,7 +40,8 @@ class WordDaoTest {
     @Test
     fun insert_WordWithTitleAndDefinition_WordAndItsDefinitionsInserted() {
         val word = Word(title = "Buy")
-        val definition = Definition(definitionText = "to get something by paying for it")
+        val definition =
+            Definition(definitionText = "to get something by paying for it")
         val type = Type(title = "verb")
         definition.type.target = type
         word.definitions.add(definition)
@@ -55,7 +60,8 @@ class WordDaoTest {
     @Test
     fun insert_WordWithTitleAndDefinitionAndExample_WordAndItsDefinitionsAndExamplesInserted() {
         val word = Word(title = "Buy")
-        val definition = Definition(definitionText = "to get something by paying for it")
+        val definition =
+            Definition(definitionText = "to get something by paying for it")
         val type = Type(title = "verb")
         val example = Example(
             originalExample = "this is example origin text",

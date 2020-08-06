@@ -1,7 +1,7 @@
 package com.hadi.android.custom.dictionary
 
 import com.hadi.android.custom.dictionary.model.dao.CategoryDao
-import com.hadi.android.custom.dictionary.model.entity.Category
+import com.hadi.android.custom.dictionary.doman.Category
 import org.junit.After
 import org.junit.Test
 import org.junit.Assert.*
@@ -20,7 +20,8 @@ class CategoryDaoTest {
     @Test
     fun insert_CategoryWithTitle_CategoryInserted() {
         val title = "Computer"
-        val category = Category(title = title)
+        val category =
+            Category(title = title)
         val id: Long = categoryDao.insert(category)
         assertNotEquals(0, id)
         assertEquals(category.title, title)
@@ -30,7 +31,8 @@ class CategoryDaoTest {
     @Test
     fun update_AlreadyExistedCategoryWithNewTitle_CategoryUpdated() {
         val oldTitle = "Computer"
-        val oldCategory = Category(title = oldTitle)
+        val oldCategory =
+            Category(title = oldTitle)
         val id: Long = categoryDao.insert(oldCategory)
 
         val newCategory = categoryDao.getCategory(id)
@@ -45,7 +47,8 @@ class CategoryDaoTest {
     @Test
     fun remove_CategoryId_CategoryRemoved(){
         val title = "Computer"
-        val category = Category(title = title)
+        val category =
+            Category(title = title)
         val id: Long = categoryDao.insert(category)
         assertTrue(id > 0)
         assertNotNull(categoryDao.getCategory(id))
@@ -55,8 +58,10 @@ class CategoryDaoTest {
 
     @Test
     fun getAllCategories_NoParameters_AllCategoriesFetched(){
-        val category1 = Category(title = "First")
-        val category2 = Category(title = "Second")
+        val category1 =
+            Category(title = "First")
+        val category2 =
+            Category(title = "Second")
         assertEquals(0, categoryDao.getAllCategories().size)
         categoryDao.insert(category1)
         categoryDao.insert(category2)
@@ -65,7 +70,8 @@ class CategoryDaoTest {
 
     @Test
     fun getCategory_CategoryId_CategoryFetched(){
-        val category = Category(title = "First")
+        val category =
+            Category(title = "First")
         assertNull(categoryDao.getCategory(1))
         categoryDao.insert(category)
         assertNotNull(categoryDao.getCategory(1))

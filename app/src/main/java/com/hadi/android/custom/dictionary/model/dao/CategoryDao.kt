@@ -1,7 +1,6 @@
 package com.hadi.android.custom.dictionary.model.dao
 
-import com.hadi.android.custom.dictionary.model.ObjectBox
-import com.hadi.android.custom.dictionary.model.entity.Category
+import com.hadi.android.custom.dictionary.doman.Category
 import io.objectbox.Box
 
 class CategoryDao(private val box: Box<Category>) {
