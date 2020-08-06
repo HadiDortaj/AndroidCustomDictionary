@@ -6,7 +6,7 @@ import org.junit.After
 import org.junit.Test
 import org.junit.Assert.*
 
-class CategoryDaoTest {
+class CategoryRepositoryTest {
 
     private val testDatabase = TestObjectBoxDatabase()
     private var categoryDao: CategoryDao =

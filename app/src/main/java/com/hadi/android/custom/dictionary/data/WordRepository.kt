@@ -2,7 +2,7 @@ package com.hadi.android.custom.dictionary.data
 
 import com.hadi.android.custom.dictionary.doman.Word
 
-class WordDao(private val dataSource: WordDataSource) {
+class WordRepository(private val dataSource: WordDataSource) {
     fun insert(word: Word): Long {
         return dataSource.insert(word)
     }

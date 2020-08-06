@@ -2,7 +2,7 @@ package com.hadi.android.custom.dictionary.data
 
 import com.hadi.android.custom.dictionary.doman.Definition
 
-class DefinitionDao(private val dataSource: DefinitionDataSource) {
+class DefinitionRepository(private val dataSource: DefinitionDataSource) {
 
     fun insert(definition: Definition): Long {
         return dataSource.insert(definition)

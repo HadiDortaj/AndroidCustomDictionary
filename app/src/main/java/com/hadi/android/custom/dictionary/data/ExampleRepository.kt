@@ -2,7 +2,7 @@ package com.hadi.android.custom.dictionary.data
 
 import com.hadi.android.custom.dictionary.doman.Example
 
-class ExampleDao(private val dataSource: ExampleDataSource) {
+class ExampleRepository(private val dataSource: ExampleDataSource) {
 
     fun insert(example: Example): Long {
         return dataSource.insert(example)

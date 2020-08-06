@@ -2,7 +2,7 @@ package com.hadi.android.custom.dictionary.data
 
 import com.hadi.android.custom.dictionary.doman.Type
 
-class TypeDao(private val dataSource: TypeDataSource) {
+class TypeRepository(private val dataSource: TypeDataSource) {
     fun insert(type: Type): Long {
         return dataSource.insert(type)
     }

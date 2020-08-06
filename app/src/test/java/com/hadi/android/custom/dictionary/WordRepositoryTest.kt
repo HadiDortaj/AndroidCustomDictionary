@@ -9,7 +9,7 @@ import org.junit.After
 import org.junit.Test
 import org.junit.Assert.*
 
-class WordDaoTest {
+class WordRepositoryTest {
 
     private val testDatabase = TestObjectBoxDatabase()
     private var wordDao: WordDao =

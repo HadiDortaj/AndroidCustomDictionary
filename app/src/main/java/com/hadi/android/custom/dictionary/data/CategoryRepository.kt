@@ -2,7 +2,7 @@ package com.hadi.android.custom.dictionary.data
 
 import com.hadi.android.custom.dictionary.doman.Category
 
-class CategoryDao(private val dataSource: CategoryDataSource) {
+class CategoryRepository(private val dataSource: CategoryDataSource) {
 
     fun insert(category: Category): Long {
         return dataSource.insert(category)
