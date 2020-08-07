@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.presenter
+package com.hadi.android.custom.dictionary.presenter.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
