@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CustomDictionary</string>
+    <string name="content_description_toolbar_current_state_icon">Current State Icon</string>
 </resources>

@@ -1,10 +1,31 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <style name="ToolbarStyle">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="android:theme">?attr/actionBarTheme</item>
+    </style>
+
+    <style name="ToolbarTitleStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@string/font_family_medium</item>
+    </style>
+
+    <style name="ToolbarIconStyle">
+        <item name="android:layout_marginEnd">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
 </resources>
