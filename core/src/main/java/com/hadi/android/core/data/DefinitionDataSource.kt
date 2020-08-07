@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.data
+package com.hadi.android.core.data
 
 import com.hadi.android.custom.dictionary.doman.Definition
 

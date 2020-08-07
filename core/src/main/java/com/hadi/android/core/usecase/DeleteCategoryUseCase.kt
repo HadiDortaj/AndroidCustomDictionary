@@ -1,6 +1,6 @@
-package com.hadi.android.custom.dictionary.usecase
+package com.hadi.android.core.usecase
 
-import com.hadi.android.custom.dictionary.data.CategoryRepository
+import com.hadi.android.core.data.CategoryRepository
 
 class DeleteCategoryUseCase(
     private val categoryRepository: CategoryRepository,

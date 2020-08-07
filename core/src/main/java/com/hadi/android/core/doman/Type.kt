@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.doman
+package com.hadi.android.core.doman
 
 data class Type(
     var id: Long,

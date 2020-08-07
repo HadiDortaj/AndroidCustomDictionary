@@ -1,7 +1,7 @@
-package com.hadi.android.custom.dictionary.usecase
+package com.hadi.android.core.usecase
 
-import com.hadi.android.custom.dictionary.data.CategoryRepository
-import com.hadi.android.custom.dictionary.doman.Category
+import com.hadi.android.core.data.CategoryRepository
+import com.hadi.android.core.doman.Category
 
 class EditCategoryUseCase(
     private val categoryRepository: CategoryRepository,
