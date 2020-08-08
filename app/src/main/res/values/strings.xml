@@ -2,4 +2,8 @@
     <string name="app_name">CustomDictionary</string>
     <string name="content_description_toolbar_current_state_icon">Current State Icon</string>
     <string name="msg_no_category_has_added_yet">No category has added yet</string>
+    <string name="hint_category_title">Title</string>
+    <string name="dialog_title_create_new_category">Create New Category</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
 </resources>

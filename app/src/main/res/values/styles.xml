@@ -28,7 +28,7 @@
         <item name="android:scaleType">fitXY</item>
     </style>
 
-    <style name="MessageTextStyle">
+    <style name="HintTextStyle">
         <item name="android:fontFamily">@string/font_family_light</item>
         <item name="android:textColor">@color/colorTextSecondary</item>
         <item name="android:textSize">18sp</item>
@@ -42,6 +42,43 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="tint">@color/colorOnAccent</item>
+    </style>
+
+    <style name="DialogTheme">
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <style name="DialogTitleStyle">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:fontFamily">@string/font_family_medium</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="InputStyle">
+        <item name="android:ems">10</item>
+        <item name="android:fontFamily">@string/font_family_regular</item>
+        <item name="android:inputType">textPersonName</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SecondaryButtonStyle">
+        <item name="android:background">@drawable/btn_secondary_bg</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textColor">@drawable/btn_secondary_textcolor</item>
+    </style>
+
+    <style name="PrimaryButtonStyle">
+        <item name="android:background">@drawable/btn_primary_bg</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:textColor">@drawable/btn_primary_textcolor</item>
     </style>
 
 </resources>
