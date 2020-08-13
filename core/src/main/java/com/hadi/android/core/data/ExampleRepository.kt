@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Example
+import com.hadi.android.core.doman.Example
 
 class ExampleRepository(private val dataSource: ExampleDataSource) {
 

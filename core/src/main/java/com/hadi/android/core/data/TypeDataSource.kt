@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Type
+import com.hadi.android.core.doman.Type
 
 interface TypeDataSource {
     fun insert(type: Type) : Long

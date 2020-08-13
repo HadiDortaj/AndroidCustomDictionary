@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Word
+import com.hadi.android.core.doman.Word
 
 class WordRepository(private val dataSource: WordDataSource) {
     fun insert(word: Word): Long {

@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Type
+import com.hadi.android.core.doman.Type
 
 class TypeRepository(private val dataSource: TypeDataSource) {
     fun insert(type: Type): Long {

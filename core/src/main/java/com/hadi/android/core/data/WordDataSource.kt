@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Word
+import com.hadi.android.core.doman.Word
 
 interface WordDataSource {
     fun insert(word: Word) : Long

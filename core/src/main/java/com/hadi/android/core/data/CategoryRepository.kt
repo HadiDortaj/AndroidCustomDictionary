@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Category
+import com.hadi.android.core.doman.Category
 
 class CategoryRepository(private val dataSource: CategoryDataSource) {
 

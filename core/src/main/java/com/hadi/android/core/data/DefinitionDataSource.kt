@@ -1,6 +1,6 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Definition
+import com.hadi.android.core.doman.Definition
 
 interface DefinitionDataSource {
     fun insert(definition: Definition): Long

@@ -1,6 +1,7 @@
 package com.hadi.android.core.data
 
-import com.hadi.android.custom.dictionary.doman.Category
+import com.hadi.android.core.doman.Category
+
 
 interface CategoryDataSource {
     fun insert(category: Category) : Long
