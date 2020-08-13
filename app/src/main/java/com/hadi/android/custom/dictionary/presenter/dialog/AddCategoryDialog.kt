@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.text.PrecomputedText
 import android.view.*
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.view.marginLeft
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.navGraphViewModels
@@ -36,6 +37,22 @@ class AddCategoryDialog : DialogFragment() {
         val content = inflater.inflate(R.layout.dialog_add_category, container, false)
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         return content
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btn_cancel.setOnClickListener{
+            dismiss()
+        }
+        btn_save.setOnClickListener{
+            if(edt_category_title.text.isEmpty()){
+                edt_category_title.setError(getString(R.string.error_category_title_could_not_be_empty))
+            } else {
+                Toast.makeText(context, "category title: ${edt_category_title.text.toString()} saved", Toast.LENGTH_SHORT).show()
+                dismiss()
+            }
+
+        }
     }
 
 }
