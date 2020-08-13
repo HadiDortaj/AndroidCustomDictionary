@@ -6,4 +6,5 @@
     <string name="dialog_title_create_new_category">Create New Category</string>
     <string name="action_save">Save</string>
     <string name="action_cancel">Cancel</string>
+    <string name="error_category_title_could_not_be_empty">category title could not be empty</string>
 </resources>

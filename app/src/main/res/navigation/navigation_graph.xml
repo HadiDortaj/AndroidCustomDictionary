@@ -6,7 +6,7 @@
     app:startDestination="@id/categoryListFragment">
     <fragment
         android:id="@+id/categoryListFragment"
-        android:name="com.hadi.android.custom.dictionary.presenter.fragment.CategoryListFragment"
+        android:name="com.hadi.android.custom.dictionary.presenter.categorylist.CategoryListFragment"
         android:label="CategoryListFragment"
         tools:layout="@layout/fragment_category_list"/>
 </navigation>
