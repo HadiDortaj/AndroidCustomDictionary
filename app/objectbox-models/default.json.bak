@@ -1,0 +1,144 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:6326771515043471073",
+      "lastPropertyId": "2:7391884514760547357",
+      "name": "Category",
+      "properties": [
+        {
+          "id": "1:9075473275760167913",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7391884514760547357",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:3097011174799077943",
+          "name": "relatedWords",
+          "targetId": "5:2325795424696547274"
+        }
+      ]
+    },
+    {
+      "id": "2:1449155595392956098",
+      "lastPropertyId": "3:3585830226050514409",
+      "name": "Definition",
+      "properties": [
+        {
+          "id": "1:7098391891214035482",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1660047876393417673",
+          "name": "definitionText",
+          "type": 9
+        },
+        {
+          "id": "3:3585830226050514409",
+          "name": "typeId",
+          "indexId": "1:4133535003774140503",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "Type"
+        }
+      ],
+      "relations": [
+        {
+          "id": "2:6085501979211253175",
+          "name": "examples",
+          "targetId": "3:2756229174719218783"
+        }
+      ]
+    },
+    {
+      "id": "3:2756229174719218783",
+      "lastPropertyId": "3:5317025041343043316",
+      "name": "Example",
+      "properties": [
+        {
+          "id": "1:6609152815050465385",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4364972193398615131",
+          "name": "originalExample",
+          "type": 9
+        },
+        {
+          "id": "3:5317025041343043316",
+          "name": "translationOrExtraInformation",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:2799294012196442558",
+      "lastPropertyId": "2:5981895599714296586",
+      "name": "Type",
+      "properties": [
+        {
+          "id": "1:484645776883395123",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5981895599714296586",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:2325795424696547274",
+      "lastPropertyId": "2:4021194311278771940",
+      "name": "Word",
+      "properties": [
+        {
+          "id": "1:5000771929580595478",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4021194311278771940",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "3:2325516080453323716",
+          "name": "definitions",
+          "targetId": "2:1449155595392956098"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "5:2325795424696547274",
+  "lastIndexId": "1:4133535003774140503",
+  "lastRelationId": "3:2325516080453323716",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -1,0 +1,169 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "6:2507855757096773047",
+      "lastPropertyId": "2:5908734229566981198",
+      "name": "CategoryEntity",
+      "properties": [
+        {
+          "id": "1:5329650136613587364",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5908734229566981198",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "4:557118728022583366",
+          "name": "relatedWordEntities",
+          "targetId": "10:1930547940474662080"
+        }
+      ]
+    },
+    {
+      "id": "7:2584665609377970871",
+      "lastPropertyId": "3:490630249960377368",
+      "name": "DefinitionEntity",
+      "properties": [
+        {
+          "id": "1:9049418284088044060",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2507559327967405325",
+          "name": "definitionText",
+          "type": 9
+        },
+        {
+          "id": "3:490630249960377368",
+          "name": "typeEntityId",
+          "indexId": "2:2469566606058315998",
+          "type": 11,
+          "flags": 1548,
+          "relationTarget": "TypeEntity"
+        }
+      ],
+      "relations": [
+        {
+          "id": "5:6877751343528096600",
+          "name": "exampleEntities",
+          "targetId": "8:1313999125290327920"
+        }
+      ]
+    },
+    {
+      "id": "8:1313999125290327920",
+      "lastPropertyId": "3:2218146417481059160",
+      "name": "ExampleEntity",
+      "properties": [
+        {
+          "id": "1:1165688404126022387",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:839323505316659345",
+          "name": "originalExample",
+          "type": 9
+        },
+        {
+          "id": "3:2218146417481059160",
+          "name": "translationOrExtraInformation",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "9:33670547602570593",
+      "lastPropertyId": "2:1616326937326262996",
+      "name": "TypeEntity",
+      "properties": [
+        {
+          "id": "1:388446436404392397",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1616326937326262996",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "10:1930547940474662080",
+      "lastPropertyId": "2:2933926572098218267",
+      "name": "WordEntity",
+      "properties": [
+        {
+          "id": "1:7923776885651510454",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2933926572098218267",
+          "name": "title",
+          "type": 9
+        }
+      ],
+      "relations": [
+        {
+          "id": "6:2121733121401313096",
+          "name": "definitionEntities",
+          "targetId": "7:2584665609377970871"
+        }
+      ]
+    }
+  ],
+  "lastEntityId": "10:1930547940474662080",
+  "lastIndexId": "2:2469566606058315998",
+  "lastRelationId": "6:2121733121401313096",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [
+    1449155595392956098,
+    2325795424696547274,
+    6326771515043471073,
+    2799294012196442558,
+    2756229174719218783
+  ],
+  "retiredIndexUids": [
+    4133535003774140503
+  ],
+  "retiredPropertyUids": [
+    7098391891214035482,
+    1660047876393417673,
+    3585830226050514409,
+    5000771929580595478,
+    4021194311278771940,
+    9075473275760167913,
+    7391884514760547357,
+    484645776883395123,
+    5981895599714296586,
+    6609152815050465385,
+    4364972193398615131,
+    5317025041343043316
+  ],
+  "retiredRelationUids": [
+    6085501979211253175,
+    2325516080453323716,
+    3097011174799077943
+  ],
+  "version": 1
+}

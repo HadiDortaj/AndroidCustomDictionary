@@ -8,7 +8,7 @@ class CategoryRepository(private val dataSource: CategoryDataSource) {
         return dataSource.insert(category)
     }
 
-    fun update(category: Category) : Boolean{
+    fun update(category: Category): Boolean {
         return dataSource.update(category)
     }
 
@@ -18,6 +18,10 @@ class CategoryRepository(private val dataSource: CategoryDataSource) {
 
     fun remove(id: Long): Boolean {
         return dataSource.remove(id)
+    }
+
+    fun contains(id: Long): Boolean {
+        return dataSource.contains(id)
     }
 
     fun get(id: Long): Category? {
