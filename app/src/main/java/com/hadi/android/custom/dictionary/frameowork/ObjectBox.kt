@@ -1,7 +1,7 @@
 package com.hadi.android.custom.dictionary.frameowork
 
 import android.content.Context
-import com.hadi.android.custom.dictionary.model.MyObjectBox
+import com.hadi.android.custom.dictionary.frameowork.model.MyObjectBox
 import io.objectbox.BoxStore
 
 object ObjectBox {
@@ -13,5 +13,9 @@ object ObjectBox {
         boxStore = MyObjectBox.builder()
             .androidContext(context.applicationContext)
             .build()
+    }
+
+    fun getInstance(): ObjectBox {
+        return this
     }
 }

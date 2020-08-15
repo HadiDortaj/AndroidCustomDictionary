@@ -7,5 +7,5 @@ class AddCategoryUseCase(
     private val categoryRepository: CategoryRepository,
     private val category: Category
 ) {
-    fun execute(): Long = categoryRepository.insert(category)
+    suspend fun execute(): Long = categoryRepository.insert(category)
 }

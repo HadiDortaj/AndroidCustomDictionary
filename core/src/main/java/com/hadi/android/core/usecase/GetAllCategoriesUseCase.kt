@@ -6,5 +6,5 @@ import com.hadi.android.core.doman.Category
 class GetAllCategoriesUseCase(
     private val categoryRepository: CategoryRepository
 ) {
-    fun execute(): List<Category> = categoryRepository.getAll()
+    suspend fun execute(): List<Category> = categoryRepository.getAll()
 }

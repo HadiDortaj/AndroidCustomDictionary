@@ -7,5 +7,5 @@ class EditCategoryUseCase(
     private val categoryRepository: CategoryRepository,
     private val category: Category
 ) {
-    fun execute(): Boolean = categoryRepository.update(category)
+    suspend fun execute(): Boolean = categoryRepository.update(category)
 }

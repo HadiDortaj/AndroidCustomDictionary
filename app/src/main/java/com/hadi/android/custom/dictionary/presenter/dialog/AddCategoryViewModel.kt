@@ -1,13 +1,61 @@
 package com.hadi.android.custom.dictionary.presenter.dialog
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.hadi.android.core.data.CategoryRepository
+import com.hadi.android.custom.dictionary.App
+import com.hadi.android.custom.dictionary.R
+import com.hadi.android.custom.dictionary.frameowork.ObjectBox
+import com.hadi.android.custom.dictionary.frameowork.datasource.CategoryDataSourceImp
+import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
+import com.hadi.android.custom.dictionary.frameowork.transformer.toCoreModel
+import kotlinx.coroutines.*
 
-class AddCategoryViewModel : ViewModel() {
+class AddCategoryViewModel(application: Application) : AndroidViewModel(application) {
 
-    val groupTitle : MutableLiveData<String> = MutableLiveData<String>("")
+    val groupTitle: MutableLiveData<String> = MutableLiveData<String>("")
+    val groupTitleError: MutableLiveData<String?> = MutableLiveData(null)
+    val onCategoryInserted: MutableLiveData<Boolean> = MutableLiveData(false)
+
+    private val categoryRepository =
+        CategoryRepository(CategoryDataSourceImp(ObjectBox.getInstance()))
+    private val viewModelScope = CoroutineScope(Dispatchers.IO)
 
     fun onBtnAddCategoryClick() {
-
+        groupTitle.value?.let { title ->
+            if (title.isEmpty()) {
+                groupTitleError.value = getString(R.string.error_category_title_can_not_be_empty)
+                return
+            }
+            viewModelScope.launch {
+                if (categoryRepository.contains(title)) {
+                    withContext(Dispatchers.Main) {
+                        groupTitleError.value =
+                            getString(R.string.error_a_category_with_entered_title_exists_now)
+                    }
+                } else {
+                    val id =
+                        categoryRepository.insert(CategoryEntity(title = groupTitle.value.toString()).toCoreModel())
+                    withContext(Dispatchers.Main) {
+                        if (id > 0) {
+                            onCategoryInserted.value = true
+                        } else {
+                            groupTitleError.value = getString(R.string.error_unknown)
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelScope.cancel()
+    }
+
+    private fun getString(id: Int): String {
+        return (getApplication() as App).getString(id)
+    }
+
 }

@@ -2,9 +2,9 @@ package com.hadi.android.core.usecase
 
 import com.hadi.android.core.data.CategoryRepository
 
-class DeleteCategoryUseCase(
+class CheckCategoryExistsUseCase(
     private val categoryRepository: CategoryRepository,
-    private val id: Long
+    private val title: String
 ) {
-    suspend fun execute(): Boolean = categoryRepository.remove(id)
+    suspend fun execute(): Boolean = categoryRepository.contains(title)
 }

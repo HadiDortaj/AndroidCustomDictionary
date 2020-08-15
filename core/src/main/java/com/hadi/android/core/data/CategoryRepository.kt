@@ -3,32 +3,35 @@ package com.hadi.android.core.data
 import com.hadi.android.core.doman.Category
 
 class CategoryRepository(private val dataSource: CategoryDataSource) {
-
-    fun insert(category: Category): Long {
+    suspend fun insert(category: Category): Long {
         return dataSource.insert(category)
     }
 
-    fun update(category: Category): Boolean {
+    suspend fun update(category: Category): Boolean {
         return dataSource.update(category)
     }
 
-    fun remove(category: Category): Boolean {
+    suspend fun remove(category: Category): Boolean {
         return dataSource.remove(category)
     }
 
-    fun remove(id: Long): Boolean {
+    suspend fun remove(id: Long): Boolean {
         return dataSource.remove(id)
     }
 
-    fun contains(id: Long): Boolean {
+    suspend fun contains(id: Long): Boolean {
         return dataSource.contains(id)
     }
 
-    fun get(id: Long): Category? {
+    suspend fun contains(title: String): Boolean {
+        return dataSource.contains(title)
+    }
+
+    suspend fun get(id: Long): Category? {
         return dataSource.get(id)
     }
 
-    fun getAll(): List<Category> {
+    suspend fun getAll(): List<Category> {
         return dataSource.getAll()
     }
 }

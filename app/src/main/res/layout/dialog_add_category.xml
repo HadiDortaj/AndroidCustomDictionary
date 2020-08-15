@@ -22,10 +22,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:theme="@style/DialogTheme"
             app:cardCornerRadius="16dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/DialogStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -59,7 +59,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:autofillHints="343"
-                    android:text="@{viewmodel.groupTitle}"
+                    android:text="@={viewmodel.groupTitle}"
+                    app:error="@{viewmodel.groupTitleError}"
                     app:layout_constraintEnd_toEndOf="@+id/txt_input_label"
                     app:layout_constraintStart_toStartOf="@+id/txt_input_label"
                     app:layout_constraintTop_toBottomOf="@+id/txt_input_label" />
