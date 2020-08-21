@@ -31,7 +31,7 @@ class AddCategoryViewModel @ViewModelInject constructor(
                 if (categoryRepository.contains(title)) {
                     withContext(Dispatchers.Main) {
                         groupTitleError.value =
-                            getString(R.string.error_a_category_already_exists_with_the_same_title)
+                            getString(R.string.error_duplicate_category_title)
                     }
                 } else {
                     val id =

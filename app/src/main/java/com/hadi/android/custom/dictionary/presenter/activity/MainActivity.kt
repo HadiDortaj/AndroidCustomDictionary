@@ -1,16 +1,14 @@
 package com.hadi.android.custom.dictionary.presenter.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
-import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.hadi.android.custom.dictionary.R
+import com.hadi.android.custom.dictionary.presenter.callback.OnToolbarContentChangeListener
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.*
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnToolbarContentChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,6 +16,15 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false);
 
+    }
+
+
+    override fun setToolbarTitle(title: String) {
+        txt_toolbar_title.text = title
+    }
+
+    override fun setToolbarIcon(icon: Int) {
+        img_toolbar_icon.setImageResource(icon)
     }
 
 }

@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.hadi.android.custom.dictionary.R
+import com.hadi.android.custom.dictionary.presenter.BaseFragment
 import com.hadi.android.custom.dictionary.presenter.dialog.AddCategoryDialog
 import kotlinx.android.synthetic.main.fragment_category_list.*
 
-class CategoryListFragment() : Fragment() {
+class CategoryListFragment() : BaseFragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +28,14 @@ class CategoryListFragment() : Fragment() {
                 addCategoryDialog.show(supportFragmentManager, "nothing")
             }
         }
+    }
+
+    override fun getToolbarTitle(): String {
+        return resources.getString(R.string.title_home)
+    }
+
+    override fun getToolbarIcon(): Int {
+        return R.drawable.ic_home
     }
 
 }
