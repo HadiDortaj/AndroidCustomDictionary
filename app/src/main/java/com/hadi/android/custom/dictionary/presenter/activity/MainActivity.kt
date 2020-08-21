@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity(), OnToolbarContentChangeListener {
     }
 
 
-    override fun setToolbarTitle(title: String) {
+    override fun onToolbarTitleChanged(title: String) {
         txt_toolbar_title.text = title
     }
 
-    override fun setToolbarIcon(icon: Int) {
+    override fun onToolbarIconChanged(icon: Int) {
         img_toolbar_icon.setImageResource(icon)
     }
 

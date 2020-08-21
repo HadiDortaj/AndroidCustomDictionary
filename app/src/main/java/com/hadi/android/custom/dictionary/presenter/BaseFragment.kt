@@ -18,8 +18,8 @@ abstract class BaseFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        onToolbarContentChangeListener?.setToolbarTitle(getToolbarTitle())
-        onToolbarContentChangeListener?.setToolbarIcon(getToolbarIcon())
+        onToolbarContentChangeListener?.onToolbarTitleChanged(getToolbarTitle())
+        onToolbarContentChangeListener?.onToolbarIconChanged(getToolbarIcon())
     }
 
     abstract fun getToolbarTitle(): String
