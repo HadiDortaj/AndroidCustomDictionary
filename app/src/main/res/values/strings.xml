@@ -8,6 +8,6 @@
     <string name="action_cancel">Cancel</string>
     <string name="error_category_title_could_not_be_empty">category title could not be empty</string>
     <string name="error_category_title_can_not_be_empty">category title can not be empty!</string>
-    <string name="error_a_category_with_entered_title_exists_now">a category with entered title exists now!</string>
+    <string name="error_a_category_already_exists_with_the_same_title">A category already exists with the same title</string>
     <string name="error_unknown">unknown error</string>
 </resources>

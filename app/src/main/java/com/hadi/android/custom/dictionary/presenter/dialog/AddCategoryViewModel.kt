@@ -1,17 +1,13 @@
 package com.hadi.android.custom.dictionary.presenter.dialog
 
 import android.app.Application
-import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.hadi.android.core.data.CategoryRepository
 import com.hadi.android.custom.dictionary.App
 import com.hadi.android.custom.dictionary.R
-import com.hadi.android.custom.dictionary.frameowork.ObjectBox
-import com.hadi.android.custom.dictionary.frameowork.datasource.CategoryDataSourceImp
 import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
 import com.hadi.android.custom.dictionary.frameowork.transformer.toCoreModel
 import kotlinx.coroutines.*
@@ -35,7 +31,7 @@ class AddCategoryViewModel @ViewModelInject constructor(
                 if (categoryRepository.contains(title)) {
                     withContext(Dispatchers.Main) {
                         groupTitleError.value =
-                            getString(R.string.error_a_category_with_entered_title_exists_now)
+                            getString(R.string.error_a_category_already_exists_with_the_same_title)
                     }
                 } else {
                     val id =
