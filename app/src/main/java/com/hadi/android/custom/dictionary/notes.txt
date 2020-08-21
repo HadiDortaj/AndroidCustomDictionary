@@ -1,3 +1,0 @@
-change BoxStoreModule to Object
-play game with InstallIn etc..
-change text of category exitsts message
