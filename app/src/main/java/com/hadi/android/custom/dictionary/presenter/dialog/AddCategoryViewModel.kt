@@ -1,8 +1,12 @@
 package com.hadi.android.custom.dictionary.presenter.dialog
 
 import android.app.Application
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import com.hadi.android.core.data.CategoryRepository
 import com.hadi.android.custom.dictionary.App
 import com.hadi.android.custom.dictionary.R
@@ -12,15 +16,14 @@ import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
 import com.hadi.android.custom.dictionary.frameowork.transformer.toCoreModel
 import kotlinx.coroutines.*
 
-class AddCategoryViewModel(application: Application) : AndroidViewModel(application) {
+class AddCategoryViewModel @ViewModelInject constructor(
+    application: Application,
+    val categoryRepository: CategoryRepository
+) : AndroidViewModel(application) {
 
-    val groupTitle: MutableLiveData<String> = MutableLiveData<String>("")
+    val groupTitle: MutableLiveData<String> = MutableLiveData("")
     val groupTitleError: MutableLiveData<String?> = MutableLiveData(null)
     val onCategoryInserted: MutableLiveData<Boolean> = MutableLiveData(false)
-
-    private val categoryRepository =
-        CategoryRepository(CategoryDataSourceImp(ObjectBox.getInstance()))
-    private val viewModelScope = CoroutineScope(Dispatchers.IO)
 
     fun onBtnAddCategoryClick() {
         groupTitle.value?.let { title ->
@@ -47,11 +50,6 @@ class AddCategoryViewModel(application: Application) : AndroidViewModel(applicat
                 }
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        viewModelScope.cancel()
     }
 
     private fun getString(id: Int): String {

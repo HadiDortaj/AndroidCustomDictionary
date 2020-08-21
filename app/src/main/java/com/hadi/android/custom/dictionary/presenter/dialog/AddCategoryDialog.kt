@@ -6,19 +6,26 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.databinding.DialogAddCategoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AddCategoryDialog() : DialogFragment() {
 
-    private lateinit var viewModel: AddCategoryViewModel
+    val viewModel: AddCategoryViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddCategoryViewModel::class.java)
-        viewModel.onCategoryInserted.observe(this, Observer<Boolean> { value ->
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        dialog?.apply {
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        }
+        viewModel.onCategoryInserted.observe(this, { value ->
             if (value == true)
                 dismiss()
         })
@@ -37,15 +44,5 @@ class AddCategoryDialog() : DialogFragment() {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        dialog?.apply {
-            window?.setLayout(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
-    }
 
 }

@@ -1,17 +1,18 @@
 package com.hadi.android.custom.dictionary.frameowork.datasource
 
 import com.hadi.android.core.data.CategoryDataSource
-import com.hadi.android.custom.dictionary.frameowork.ObjectBox
 import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
 import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity_
 import com.hadi.android.custom.dictionary.frameowork.transformer.toAppModel
 import com.hadi.android.custom.dictionary.frameowork.transformer.toCoreModel
 import com.hadi.android.core.doman.Category as DomainCategory
 import io.objectbox.Box
+import io.objectbox.BoxStore
+import javax.inject.Inject
 
-class CategoryDataSourceImp(objectBox: ObjectBox) : CategoryDataSource {
+class CategoryDataSourceImp @Inject constructor(boxStore: BoxStore) : CategoryDataSource {
 
-    private val box: Box<CategoryEntity> = objectBox.boxStore.boxFor(
+    private val box: Box<CategoryEntity> = boxStore.boxFor(
         CategoryEntity::class.java
     )
 
