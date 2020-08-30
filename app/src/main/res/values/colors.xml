@@ -10,4 +10,5 @@
     <color name="colorTextSecondary">#80212121</color>
     <color name="colorTextPrimary">#212121</color>
     <color name="colorBackground">#F3F3F3</color>
+    <color name="colorListItemBackground">#FFFFFF</color>
 </resources>

@@ -8,5 +8,13 @@
         android:id="@+id/categoryListFragment"
         android:name="com.hadi.android.custom.dictionary.presenter.categorylist.CategoryListFragment"
         android:label="CategoryListFragment"
-        tools:layout="@layout/fragment_category_list"/>
+        tools:layout="@layout/fragment_category_list">
+        <action
+            android:id="@+id/action_categoryListFragment_to_addCategoryDialog2"
+            app:destination="@id/addCategoryDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/addCategoryDialog"
+        android:name="com.hadi.android.custom.dictionary.presenter.dialog.AddCategoryDialog"
+        android:label="AddCategoryDialog" />
 </navigation>
