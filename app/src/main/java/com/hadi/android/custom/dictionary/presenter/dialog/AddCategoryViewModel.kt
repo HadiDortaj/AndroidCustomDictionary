@@ -28,7 +28,7 @@ class AddCategoryViewModel @ViewModelInject constructor(
                 groupTitleError.value = getString(R.string.error_category_title_can_not_be_empty)
                 return
             }
-            viewModelScope.launch {
+            viewModelScope.launch(Dispatchers.IO) {
                 if (categoryRepository.contains(title)) {
                     withContext(Dispatchers.Main) {
                         groupTitleError.value =
