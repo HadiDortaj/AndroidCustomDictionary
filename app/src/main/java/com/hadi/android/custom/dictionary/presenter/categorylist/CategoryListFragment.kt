@@ -73,6 +73,9 @@ class CategoryListFragment() : BaseFragment() {
         viewModel.insertedCategoryPosition.observe(viewLifecycleOwner, { position ->
             categoryListAdapter.notifyItemInserted(position)
         })
+        viewModel.listEmpty.observe(viewLifecycleOwner, { listEmpty ->
+            text_empty_category_list_msg.visibility = if (listEmpty) View.VISIBLE else View.GONE
+        })
     }
 
 }
