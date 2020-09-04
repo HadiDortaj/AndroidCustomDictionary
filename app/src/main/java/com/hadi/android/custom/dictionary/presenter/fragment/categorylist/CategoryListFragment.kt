@@ -25,8 +25,8 @@ class CategoryListFragment() : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        categoryListAdapter = CategoryListAdapter(viewModel.categoryList.value!!) { categoryId ->
-            goToWordListFragment(categoryId)
+        categoryListAdapter = CategoryListAdapter(viewModel.categoryList.value!!) { category ->
+            goToWordListFragment(category)
         }
     }
 
@@ -85,11 +85,9 @@ class CategoryListFragment() : BaseFragment() {
             })
     }
 
-    private fun goToWordListFragment(categoryId: Long) {
+    private fun goToWordListFragment(category: CategoryEntity) {
         val action =
-            CategoryListFragmentDirections.actionCategoryListFragmentToWordListFragment(
-                categoryId
-            )
+            CategoryListFragmentDirections.actionCategoryListFragmentToWordListFragment(category)
         findNavController().navigate(action)
     }
 

@@ -10,7 +10,7 @@ import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
 
 class CategoryListAdapter(
     var categoryList: List<CategoryEntity>,
-    val onCategoryClicked: (Long) -> Unit
+    val onCategoryClicked: (CategoryEntity) -> Unit
 ) :
     RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
 
@@ -39,7 +39,7 @@ class CategoryListAdapter(
 
         init {
             itemCategoryBinding.itemRoot.setOnClickListener {
-                onCategoryClicked(categoryList[adapterPosition].id)
+                onCategoryClicked(categoryList[adapterPosition])
             }
         }
 

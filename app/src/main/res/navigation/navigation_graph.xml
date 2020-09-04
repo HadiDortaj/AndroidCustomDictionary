@@ -25,7 +25,7 @@
         android:name="com.hadi.android.custom.dictionary.presenter.fragment.wordlist.WordListFragment"
         android:label="WordListFragment">
         <argument
-            android:name="categoryId"
-            app:argType="long" />
+            android:name="category"
+            app:argType="com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity" />
     </fragment>
 </navigation>
