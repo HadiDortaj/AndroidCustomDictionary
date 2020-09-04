@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.presenter.dialog
+package com.hadi.android.custom.dictionary.presenter.fragment.dialog.addcategory
 
 import android.app.Application
 import androidx.hilt.lifecycle.ViewModelInject
@@ -10,8 +10,9 @@ import com.hadi.android.custom.dictionary.App
 import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
 import com.hadi.android.custom.dictionary.frameowork.transformer.toCoreModel
-import kotlinx.coroutines.*
-import java.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AddCategoryViewModel @ViewModelInject constructor(
     application: Application,
@@ -40,7 +41,7 @@ class AddCategoryViewModel @ViewModelInject constructor(
                         categoryRepository.insert(category.toCoreModel())
                     withContext(Dispatchers.Main) {
                         if (id > 0) {
-                            onCategoryInserted.value = category
+                            onCategoryInserted.value = category.apply { this.id = id }
                         } else {
                             groupTitleError.value = getString(R.string.error_unknown)
                         }

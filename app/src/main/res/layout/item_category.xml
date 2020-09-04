@@ -20,6 +20,7 @@
         app:cardCornerRadius="10dp">
 
         <LinearLayout
+            android:id="@+id/item_root"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?attr/selectableItemBackground"
@@ -39,9 +40,11 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@string/font_family_regular"
                 android:gravity="center_vertical"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:text="@{category.title}"
                 android:textSize="18sp"
-                app:drawableLeftCompat="@drawable/ic_category_item"
+                app:drawableLeftCompat="@drawable/ic_category"
                 tools:text="Computer" />
 
         </LinearLayout>

@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.presenter.categorylist
+package com.hadi.android.custom.dictionary.presenter.fragment.categorylist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
-import com.hadi.android.custom.dictionary.presenter.BaseFragment
+import com.hadi.android.custom.dictionary.presenter.fragment.base.BaseFragment
+import com.hadi.android.custom.dictionary.presenter.utils.Event
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_category_list.*
 
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_category_list.*
 class CategoryListFragment() : BaseFragment() {
 
     companion object {
-        const val OBSERVABLE_INSERTED_CATEGORY = "OBSERVABLE_INSERTED_CATEGORY"
+        const val KEY_LIVE_DATA_INSERTED_CATEGORY = "KEY_LIVE_DATA_INSERTED_CATEGORY"
     }
 
     private val viewModel: CategoryListViewModel by viewModels()
@@ -24,7 +25,9 @@ class CategoryListFragment() : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        categoryListAdapter = CategoryListAdapter(viewModel.categoryList.value!!)
+        categoryListAdapter = CategoryListAdapter(viewModel.categoryList.value!!) { categoryId ->
+            goToWordListFragment(categoryId)
+        }
     }
 
     override fun onCreateView(
@@ -32,20 +35,17 @@ class CategoryListFragment() : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val content = inflater.inflate(R.layout.fragment_category_list, container, false)
-        return content
+        return inflater.inflate(R.layout.fragment_category_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupCategoryList()
+        setupCategoryListRecyclerView()
         setupObservers()
 
         fab_add_category.setOnClickListener {
-            val action =
-                CategoryListFragmentDirections.actionCategoryListFragmentToAddCategoryDialog2()
-            findNavController().navigate(action)
+            goToAddCategoryFragment()
         }
     }
 
@@ -57,25 +57,45 @@ class CategoryListFragment() : BaseFragment() {
         return R.drawable.ic_home
     }
 
-    private fun setupCategoryList() {
-        rv_categories.setHasFixedSize(true)
-        rv_categories.adapter = categoryListAdapter
+    private fun setupCategoryListRecyclerView() {
+        rv_category_list.setHasFixedSize(true)
+        rv_category_list.adapter = categoryListAdapter
     }
 
     private fun setupObservers() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<CategoryEntity>(
-            OBSERVABLE_INSERTED_CATEGORY
-        )?.observe(viewLifecycleOwner, { category -> viewModel.onCategoryInserted(category) })
         viewModel.categoryList.observe(viewLifecycleOwner, { categoryList ->
             categoryListAdapter.categoryList = categoryList
             categoryListAdapter.notifyDataSetChanged()
         })
         viewModel.insertedCategoryPosition.observe(viewLifecycleOwner, { position ->
-            categoryListAdapter.notifyItemInserted(position)
+            position.getContentIfNotHandled()?.let {
+                categoryListAdapter.notifyItemInserted(it)
+            }
         })
-        viewModel.listEmpty.observe(viewLifecycleOwner, { listEmpty ->
+        viewModel.listIsEmpty.observe(viewLifecycleOwner, { listEmpty ->
             text_empty_category_list_msg.visibility = if (listEmpty) View.VISIBLE else View.GONE
         })
+        findNavController().currentBackStackEntry
+            ?.savedStateHandle
+            ?.getLiveData<Event<CategoryEntity>>(KEY_LIVE_DATA_INSERTED_CATEGORY)
+            ?.observe(viewLifecycleOwner, { category ->
+                category.getContentIfNotHandled()?.let {
+                    viewModel.onCategoryInserted(it)
+                }
+            })
+    }
+
+    private fun goToWordListFragment(categoryId: Long) {
+        val action =
+            CategoryListFragmentDirections.actionCategoryListFragmentToWordListFragment(
+                categoryId
+            )
+        findNavController().navigate(action)
+    }
+
+    private fun goToAddCategoryFragment() {
+        val action = CategoryListFragmentDirections.actionCategoryListFragmentToAddCategoryDialog2()
+        findNavController().navigate(action)
     }
 
 }

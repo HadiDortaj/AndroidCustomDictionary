@@ -12,6 +12,4 @@ import java.io.Serializable
 data class CategoryEntity(
     @Id var id: Long = 0,
     var title: String
-) : Parcelable {
-    lateinit var relatedWordEntities: ToMany<WordEntity>
-}
+) : Parcelable

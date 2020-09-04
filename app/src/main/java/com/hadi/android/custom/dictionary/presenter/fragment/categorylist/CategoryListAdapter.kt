@@ -1,4 +1,4 @@
-package com.hadi.android.custom.dictionary.presenter.categorylist
+package com.hadi.android.custom.dictionary.presenter.fragment.categorylist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,13 +8,20 @@ import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.databinding.ItemCategoryBinding
 import com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity
 
-class CategoryListAdapter(var categoryList: List<CategoryEntity>) :
+class CategoryListAdapter(
+    var categoryList: List<CategoryEntity>,
+    val onCategoryClicked: (Long) -> Unit
+) :
     RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
         val binding: ItemCategoryBinding =
-            DataBindingUtil.inflate(inflater, R.layout.item_category, parent, false)
+            DataBindingUtil.inflate(
+                LayoutInflater.from(parent.context),
+                R.layout.item_category,
+                parent,
+                false
+            )
         return CategoryViewHolder(binding)
     }
 
@@ -27,8 +34,14 @@ class CategoryListAdapter(var categoryList: List<CategoryEntity>) :
         return categoryList.size
     }
 
-    class CategoryViewHolder(val itemCategoryBinding: ItemCategoryBinding) :
+    inner class CategoryViewHolder(val itemCategoryBinding: ItemCategoryBinding) :
         RecyclerView.ViewHolder(itemCategoryBinding.root) {
+
+        init {
+            itemCategoryBinding.itemRoot.setOnClickListener {
+                onCategoryClicked(categoryList[adapterPosition].id)
+            }
+        }
 
         fun bind(categoryEntity: CategoryEntity) {
             itemCategoryBinding.category = categoryEntity
