@@ -9,5 +9,8 @@
     <string name="error_category_title_can_not_be_empty">Category title can not be empty!</string>
     <string name="error_duplicate_category_title">Duplicate category title!</string>
     <string name="error_unknown">unknown error</string>
-    <string name="title_home">Home</string>
+    <string name="toolbar_title_category_list_fragment">Home</string>
+    <string name="toolbar_title_add_word_fragment">Add New Word</string>
+    <string name="hint_word_title">Title</string>
+    <string name="hint_definition_text">Definition</string>
 </resources>

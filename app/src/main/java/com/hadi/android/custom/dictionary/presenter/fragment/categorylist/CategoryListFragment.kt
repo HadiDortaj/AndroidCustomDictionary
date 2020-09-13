@@ -50,7 +50,7 @@ class CategoryListFragment() : BaseFragment() {
     }
 
     override fun getToolbarTitle(): String {
-        return resources.getString(R.string.title_home)
+        return resources.getString(R.string.toolbar_title_category_list_fragment)
     }
 
     override fun getToolbarIcon(): Int {

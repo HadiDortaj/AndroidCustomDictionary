@@ -27,5 +27,16 @@
         <argument
             android:name="category"
             app:argType="com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity" />
+        <action
+            android:id="@+id/action_wordListFragment_to_addWordFragment"
+            app:destination="@id/addWordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWordFragment"
+        android:name="com.hadi.android.custom.dictionary.presenter.fragment.addword.AddWordFragment"
+        android:label="AddWordFragment">
+        <argument
+            android:name="category"
+            app:argType="com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity" />
     </fragment>
 </navigation>

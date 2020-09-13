@@ -43,6 +43,7 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
         <item name="tint">@color/colorOnAccent</item>
+        <item name="backgroundTint">@color/colorAccent</item>
     </style>
 
     <style name="DialogStyle">
@@ -63,6 +64,10 @@
         <item name="android:inputType">textPersonName</item>
         <item name="android:textSize">18sp</item>
         <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <style name="EditTextStyle.Bold">
+        <item name="android:fontFamily">@string/font_family_medium</item>
     </style>
 
     <style name="SecondaryButtonStyle">

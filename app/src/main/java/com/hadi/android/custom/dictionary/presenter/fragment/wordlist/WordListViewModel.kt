@@ -10,7 +10,7 @@ class WordListViewModel @ViewModelInject constructor(@Assisted savedStateHandle:
     ViewModel() {
 
     companion object {
-        private const val KEY_CATEGORY =
+        const val KEY_CATEGORY =
             "category" // this value should be equal to the value of argument name set to navigation graph
     }
 
