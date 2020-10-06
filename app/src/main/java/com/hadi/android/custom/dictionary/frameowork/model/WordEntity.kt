@@ -13,8 +13,8 @@ import kotlinx.android.parcel.Parcelize
 @Keep
 data class WordEntity(
     @Id var id: Long = 0,
-    var title: String
+    var title: String = ""
 ) : Parcelable {
-    lateinit var categoryEntity: ToOne<CategoryEntity>
     lateinit var definitionEntities: ToMany<DefinitionEntity>
+    lateinit var categoryEntity: ToOne<CategoryEntity>
 }

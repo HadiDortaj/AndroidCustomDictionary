@@ -18,16 +18,14 @@ class CategoryListViewModel @ViewModelInject constructor(val categoryRepository:
     val categoryList =
         MutableLiveData<MutableList<CategoryEntity>>(mutableListOf()) // value should not be null.
     val insertedCategoryPosition = MutableLiveData<Event<Int>>()
-    val listIsEmpty = MutableLiveData<Boolean>()
+    val categoryListIsEmpty = MutableLiveData<Boolean>()
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = categoryRepository.getAll().map { it.toAppModel() }
+            val tempCategoryList = categoryRepository.getAll().map { it.toAppModel() }
                 .toMutableList()
-            withContext(Dispatchers.Main) {
-                categoryList.value = result
-                checkListEmpty()
-            }
+            checkIfCategoryListIsEmpty(tempCategoryList)
+            categoryList.postValue(tempCategoryList)
         }
     }
 
@@ -35,16 +33,14 @@ class CategoryListViewModel @ViewModelInject constructor(val categoryRepository:
         categoryList.value?.let { list ->
             list.add(category)
             insertedCategoryPosition.value = Event(list.size - 1)
-            checkListEmpty()
+            checkIfCategoryListIsEmpty(categoryList.value)
         }
     }
 
-    private fun checkListEmpty() {
-        val result = categoryList.value!!.isEmpty()
-        if (listIsEmpty.value != null) {
-            if (listIsEmpty.value != result) listIsEmpty.value = result
-        } else {
-            listIsEmpty.value = result
+    private fun checkIfCategoryListIsEmpty(categoryList: List<CategoryEntity>?) {
+        val categoryListIsEmptyResult = categoryList?.isEmpty() ?: true
+        if (categoryListIsEmpty.value == null || categoryListIsEmpty.value != categoryListIsEmptyResult) {
+            categoryListIsEmpty.postValue(categoryListIsEmptyResult)
         }
     }
 

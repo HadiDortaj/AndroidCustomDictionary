@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
 
 class AddCategoryViewModel @ViewModelInject constructor(
     application: Application,
-    val categoryRepository: CategoryRepository
+    private val categoryRepository: CategoryRepository
 ) : AndroidViewModel(application) {
 
     val groupTitle: MutableLiveData<String> = MutableLiveData("")

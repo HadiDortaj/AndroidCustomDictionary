@@ -72,7 +72,7 @@ class CategoryListFragment() : BaseFragment() {
                 categoryListAdapter.notifyItemInserted(it)
             }
         })
-        viewModel.listIsEmpty.observe(viewLifecycleOwner, { listEmpty ->
+        viewModel.categoryListIsEmpty.observe(viewLifecycleOwner, { listEmpty ->
             text_empty_category_list_msg.visibility = if (listEmpty) View.VISIBLE else View.GONE
         })
         findNavController().currentBackStackEntry

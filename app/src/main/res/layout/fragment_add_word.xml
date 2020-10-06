@@ -8,6 +8,10 @@
         <variable
             name="viewmodel"
             type="com.hadi.android.custom.dictionary.presenter.fragment.addword.AddWordViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.hadi.android.custom.dictionary.presenter.fragment.addword.AddWordFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,9 +19,8 @@
         android:layout_height="match_parent"
         android:padding="5dp">
 
-
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/edt_word_title"
             style="@style/EditTextStyle.Bold"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,35 +31,92 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Upon" />
 
-        <include
-            layout="@layout/item_definition"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@id/btn_save"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edt_word_title">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_definition_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:visibility="invisible" />
+
+                    <Button
+                        android:id="@+id/btn_add_definition"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="6"
+                        android:background="@drawable/btn_add_definition"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@string/font_family_light"
+                        android:gravity="center"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:onClick="@{() -> viewmodel.onAddDefinitionClick()}"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="@string/action_add_definition"
+                        android:textAllCaps="false"
+                        android:textColor="@drawable/text_color_btn_add_definition"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_cancel"
             style="@style/SecondaryButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:onClick="@{() -> fragment.onCancelClick()}"
             android:text="@string/action_cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_save"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
-            app:layout_constraintStart_toStartOf="@+id/guideline2" />
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/btn_save" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_save"
             style="@style/PrimaryButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="@string/action_save"
-            app:layout_constraintBottom_toBottomOf="@+id/button"
+            android:onClick="@{() -> viewmodel.onSaveClick()}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toTopOf="@+id/button" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/guideline3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -86,6 +146,19 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.45" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.85" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,13 +5,13 @@ import androidx.annotation.Keep
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.relation.ToMany
+import io.objectbox.relation.ToOne
 import kotlinx.android.parcel.Parcelize
-import java.io.Serializable
 
 @Entity
 @Parcelize
 @Keep
 data class CategoryEntity(
     @Id var id: Long = 0,
-    var title: String
+    var title: String = ""
 ) : Parcelable

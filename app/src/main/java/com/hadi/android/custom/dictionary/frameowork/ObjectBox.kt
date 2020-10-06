@@ -15,7 +15,4 @@ object ObjectBox {
             .build()
     }
 
-    fun getInstance(): ObjectBox {
-        return this
-    }
 }

@@ -11,7 +11,7 @@ import java.io.Serializable
 @Parcelize
 @Keep
 class ExampleEntity(
-    @Id var id: Long,
-    var originalExample: String,
-    var translationOrExtraInformation: String
+    @Id var id: Long = 0,
+    var originalExample: String = "",
+    var translationOrExtraInformation: String = ""
 ): Parcelable

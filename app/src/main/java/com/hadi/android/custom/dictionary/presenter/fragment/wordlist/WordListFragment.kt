@@ -7,40 +7,73 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hadi.android.custom.dictionary.R
+import com.hadi.android.custom.dictionary.frameowork.model.WordEntity
 import com.hadi.android.custom.dictionary.presenter.fragment.base.BaseFragment
+import com.hadi.android.custom.dictionary.presenter.utils.Event
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_word_list.*
 
+@AndroidEntryPoint
 class WordListFragment : BaseFragment() {
 
-    private val wordListViewModel: WordListViewModel by viewModels()
+    companion object {
+        const val KEY_NEW_WORD = "KEY_NEW_WORD"
+    }
+
+    private val viewModel: WordListViewModel by viewModels()
+    private val wordListAdapter: WordListAdapter = WordListAdapter(mutableListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val content = inflater.inflate(R.layout.fragment_word_list, container, false)
-        return content
+        return inflater.inflate(R.layout.fragment_word_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fab_add_word.setOnClickListener{
-            goToAddWordFragment()
-        }
+        setupListeners()
+        setupObservers()
+        setupWordListRecyclerView()
     }
 
-    private fun goToAddWordFragment() {
-        val action = WordListFragmentDirections.actionWordListFragmentToAddWordFragment(wordListViewModel.category)
-        findNavController().navigate(action)
+    private fun setupWordListRecyclerView() {
+        rv_word_list.adapter = wordListAdapter
     }
 
     override fun getToolbarTitle(): String {
-        return wordListViewModel.category.title
+        return viewModel.category.title
     }
 
     override fun getToolbarIcon(): Int {
         return R.drawable.ic_category
+    }
+
+    private fun setupListeners() {
+        fab_add_word.setOnClickListener {
+            goToAddWordFragment()
+        }
+    }
+
+    private fun setupObservers() {
+        viewModel.wordListIsEmpty.observe(viewLifecycleOwner) { wordListIsEmpty ->
+            text_empty_word_list_msg.visibility = if (wordListIsEmpty) View.VISIBLE else View.GONE
+        }
+        viewModel.wordList.observe(viewLifecycleOwner) { newList ->
+            wordListAdapter.setData(newList.toMutableList())
+        }
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Event<WordEntity>>(
+            KEY_NEW_WORD
+        )?.observe(viewLifecycleOwner) { newWord ->
+            newWord.getContentIfNotHandled()?.let { viewModel.onNewWordInserted(it) }
+        }
+    }
+
+    private fun goToAddWordFragment() {
+        val action =
+            WordListFragmentDirections.actionWordListFragmentToAddWordFragment(viewModel.category)
+        findNavController().navigate(action)
     }
 
 }
