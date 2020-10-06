@@ -44,7 +44,13 @@
           "type": 9
         }
       ],
-      "relations": []
+      "relations": [
+        {
+          "id": "3:7634594968508892677",
+          "name": "exampleEntities",
+          "targetId": "3:845023695561108619"
+        }
+      ]
     },
     {
       "id": "3:845023695561108619",
@@ -106,7 +112,7 @@
   ],
   "lastEntityId": "4:1458930648696765154",
   "lastIndexId": "1:998092149212360551",
-  "lastRelationId": "2:5971782965178828113",
+  "lastRelationId": "3:7634594968508892677",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,

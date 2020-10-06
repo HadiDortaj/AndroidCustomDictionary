@@ -7,11 +7,11 @@
 
         <variable
             name="viewmodel"
-            type="com.hadi.android.custom.dictionary.presenter.fragment.dialog.addcategory.AddCategoryViewModel" />
+            type="com.hadi.android.custom.dictionary.ui.addcategory.AddCategoryViewModel" />
 
         <variable
             name="dialog"
-            type="com.hadi.android.custom.dictionary.presenter.fragment.dialog.addcategory.AddCategoryDialog" />
+            type="com.hadi.android.custom.dictionary.ui.addcategory.AddCategoryDialog" />
 
     </data>
 

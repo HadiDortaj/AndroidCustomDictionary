@@ -7,11 +7,11 @@
 
         <variable
             name="viewmodel"
-            type="com.hadi.android.custom.dictionary.presenter.fragment.addword.AddWordViewModel" />
+            type="com.hadi.android.custom.dictionary.ui.addword.AddWordViewModel" />
 
         <variable
             name="fragment"
-            type="com.hadi.android.custom.dictionary.presenter.fragment.addword.AddWordFragment" />
+            type="com.hadi.android.custom.dictionary.ui.addword.AddWordFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
