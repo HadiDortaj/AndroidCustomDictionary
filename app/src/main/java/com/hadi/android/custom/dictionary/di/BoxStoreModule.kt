@@ -1,6 +1,6 @@
 package com.hadi.android.custom.dictionary.di
 
-import com.hadi.android.custom.dictionary.frameowork.ObjectBox
+import com.hadi.android.custom.dictionary.database.ObjectBox
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

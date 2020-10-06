@@ -1,7 +1,7 @@
 package com.hadi.android.custom.dictionary
 
 import android.app.Application
-import com.hadi.android.custom.dictionary.frameowork.ObjectBox
+import com.hadi.android.custom.dictionary.database.ObjectBox
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

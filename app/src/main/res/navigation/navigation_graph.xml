@@ -6,7 +6,7 @@
     app:startDestination="@id/categoryListFragment">
     <fragment
         android:id="@+id/categoryListFragment"
-        android:name="com.hadi.android.custom.dictionary.presenter.fragment.categorylist.CategoryListFragment"
+        android:name="com.hadi.android.custom.dictionary.ui.categorylist.CategoryListFragment"
         android:label="CategoryListFragment"
         tools:layout="@layout/fragment_category_list">
         <action
@@ -18,25 +18,25 @@
     </fragment>
     <dialog
         android:id="@+id/addCategoryDialog"
-        android:name="com.hadi.android.custom.dictionary.presenter.fragment.dialog.addcategory.AddCategoryDialog"
+        android:name="com.hadi.android.custom.dictionary.ui.addcategory.AddCategoryDialog"
         android:label="AddCategoryDialog" />
     <fragment
         android:id="@+id/wordListFragment"
-        android:name="com.hadi.android.custom.dictionary.presenter.fragment.wordlist.WordListFragment"
+        android:name="com.hadi.android.custom.dictionary.ui.wordlist.WordListFragment"
         android:label="WordListFragment">
         <argument
             android:name="category"
-            app:argType="com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity" />
+            app:argType="com.hadi.android.custom.dictionary.database.model.CategoryEntity" />
         <action
             android:id="@+id/action_wordListFragment_to_addWordFragment"
             app:destination="@id/addWordFragment" />
     </fragment>
     <fragment
         android:id="@+id/addWordFragment"
-        android:name="com.hadi.android.custom.dictionary.presenter.fragment.addword.AddWordFragment"
+        android:name="com.hadi.android.custom.dictionary.ui.addword.AddWordFragment"
         android:label="AddWordFragment">
         <argument
             android:name="category"
-            app:argType="com.hadi.android.custom.dictionary.frameowork.model.CategoryEntity" />
+            app:argType="com.hadi.android.custom.dictionary.database.model.CategoryEntity" />
     </fragment>
 </navigation>
