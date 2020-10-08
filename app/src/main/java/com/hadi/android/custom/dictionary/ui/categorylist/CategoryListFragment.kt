@@ -58,6 +58,7 @@ class CategoryListFragment() : BaseFragment() {
     }
 
     private fun setupCategoryListRecyclerView() {
+        rv_category_list.itemAnimator = null
         rv_category_list.setHasFixedSize(true)
         rv_category_list.adapter = categoryListAdapter
     }

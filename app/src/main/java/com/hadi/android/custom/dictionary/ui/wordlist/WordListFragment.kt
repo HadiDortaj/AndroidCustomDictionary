@@ -44,6 +44,7 @@ class WordListFragment : BaseFragment() {
     }
 
     private fun setupWordListRecyclerView() {
+        rv_word_list.itemAnimator = null
         rv_word_list.adapter = wordListAdapter
     }
 
