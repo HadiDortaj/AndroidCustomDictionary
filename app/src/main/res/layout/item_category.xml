@@ -13,11 +13,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/colorListItemBackground"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
-        app:cardCornerRadius="10dp">
+        android:layout_marginRight="5dp"
+        android:background="@color/colorListItemBackground">
 
         <LinearLayout
             android:id="@+id/item_root"
@@ -38,10 +37,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
+                android:ellipsize="end"
                 android:fontFamily="@string/font_family_regular"
                 android:gravity="center_vertical"
                 android:maxLines="1"
-                android:ellipsize="end"
                 android:text="@{category.title}"
                 android:textSize="18sp"
                 app:drawableLeftCompat="@drawable/ic_category"
