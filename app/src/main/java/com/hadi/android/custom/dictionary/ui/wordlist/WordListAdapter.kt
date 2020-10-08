@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.hadi.android.custom.dictionary.database.model.WordEntity
+import com.hadi.android.core.doman.Word
 import com.hadi.android.custom.dictionary.databinding.ItemWordBinding
+import java.lang.IllegalArgumentException
 
-class WordListAdapter(private var wordList: MutableList<WordEntity>) :
+class WordListAdapter(private val wordList: MutableList<Word>) :
     RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
@@ -25,7 +26,8 @@ class WordListAdapter(private var wordList: MutableList<WordEntity>) :
         return wordList.size
     }
 
-    fun setData(newList: MutableList<WordEntity>) {
+    fun setData(newList: MutableList<Word>) {
+        if (newList === wordList) throw IllegalArgumentException("list reference passed shouldn't point to old list of this adapter!")
         val oldList = this.wordList
         val definitionDiffUtilCallback = DefinitionDiffUtilCallback(oldList, newList)
         val diffResult = DiffUtil.calculateDiff(definitionDiffUtilCallback)
@@ -37,14 +39,14 @@ class WordListAdapter(private var wordList: MutableList<WordEntity>) :
     inner class WordViewHolder(val binding: ItemWordBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(word: WordEntity) {
+        fun bind(word: Word) {
             binding.word = word
         }
     }
 
     private class DefinitionDiffUtilCallback(
-        val oldList: List<WordEntity>,
-        val newList: List<WordEntity>
+        val oldList: List<Word>,
+        val newList: List<Word>
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize(): Int = oldList.size

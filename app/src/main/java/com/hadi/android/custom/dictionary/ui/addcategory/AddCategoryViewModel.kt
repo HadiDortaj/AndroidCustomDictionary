@@ -6,10 +6,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.hadi.android.core.data.CategoryRepository
+import com.hadi.android.core.doman.Category
 import com.hadi.android.custom.dictionary.App
 import com.hadi.android.custom.dictionary.R
-import com.hadi.android.custom.dictionary.database.model.CategoryEntity
-import com.hadi.android.custom.dictionary.database.toCoreModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -21,7 +20,7 @@ class AddCategoryViewModel @ViewModelInject constructor(
 
     val groupTitle: MutableLiveData<String> = MutableLiveData("")
     val groupTitleError: MutableLiveData<String?> = MutableLiveData(null)
-    val onCategoryInserted: MutableLiveData<CategoryEntity> = MutableLiveData()
+    val onCategoryInserted: MutableLiveData<Category> = MutableLiveData()
 
     fun onBtnAddCategoryClick() {
         groupTitle.value?.let { title ->
@@ -36,12 +35,11 @@ class AddCategoryViewModel @ViewModelInject constructor(
                             getString(R.string.error_duplicate_category_title)
                     }
                 } else {
-                    val category = CategoryEntity(title = groupTitle.value.toString())
-                    val id =
-                        categoryRepository.insert(category.toCoreModel())
+                    val category = Category(0, groupTitle.value.toString())
+                    val id = categoryRepository.insert(category)
                     withContext(Dispatchers.Main) {
                         if (id > 0) {
-                            onCategoryInserted.value = category.apply { this.id = id }
+                            onCategoryInserted.value = category
                         } else {
                             groupTitleError.value = getString(R.string.error_unknown)
                         }

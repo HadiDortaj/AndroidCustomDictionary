@@ -24,7 +24,7 @@ class CategoryRepository(private val dataSource: CategoryDataSource) {
     }
 
     suspend fun contains(title: String): Boolean {
-        return dataSource.contains(title)
+        return dataSource.containsTitle(title)
     }
 
     suspend fun get(id: Long): Category? {

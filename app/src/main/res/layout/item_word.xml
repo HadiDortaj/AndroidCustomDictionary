@@ -7,7 +7,7 @@
 
         <variable
             name="word"
-            type="com.hadi.android.custom.dictionary.database.model.WordEntity" />
+            type="com.hadi.android.core.doman.Word" />
     </data>
 
     <androidx.cardview.widget.CardView

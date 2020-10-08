@@ -6,19 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.hadi.android.core.doman.Word
 import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.databinding.FragmentAddWordBinding
-import com.hadi.android.custom.dictionary.database.model.WordEntity
 import com.hadi.android.custom.dictionary.ui.base.BaseFragment
-import com.hadi.android.custom.dictionary.ui.wordlist.WordListFragment
 import com.hadi.android.custom.dictionary.ui.useful.Event
+import com.hadi.android.custom.dictionary.ui.wordlist.WordListFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_add_word.*
 
 @AndroidEntryPoint
 class AddWordFragment : BaseFragment() {
 
-    private val viewmodel: AddWordViewModel by viewModels()
+    private val viewModel: AddWordViewModel by viewModels()
     private lateinit var definitionListAdapter: DefinitionListAdapter
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class AddWordFragment : BaseFragment() {
     ): View? {
         val binding = FragmentAddWordBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewmodel = viewmodel
+        binding.viewmodel = viewModel
         binding.fragment = this
         return binding.root
     }
@@ -57,12 +57,12 @@ class AddWordFragment : BaseFragment() {
     }
 
     private fun setupObservers() {
-        viewmodel.definitionList.observe(viewLifecycleOwner) { newList ->
+        viewModel.definitionList.observe(viewLifecycleOwner) { newList ->
             definitionListAdapter.setData(newList.toMutableList())
         }
-        viewmodel.insertedWord.observe(viewLifecycleOwner) { newWord ->
-            findNavController().previousBackStackEntry?.savedStateHandle?.getLiveData<Event<WordEntity>>(
-                WordListFragment.KEY_NEW_WORD
+        viewModel.wordInserted.observe(viewLifecycleOwner) { newWord ->
+            findNavController().previousBackStackEntry?.savedStateHandle?.getLiveData<Event<Word>>(
+                WordListFragment.KEY_NEW_WORD_LIVE_DATA
             )?.value = newWord
             findNavController().popBackStack()
         }

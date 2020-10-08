@@ -26,7 +26,7 @@
         android:label="WordListFragment">
         <argument
             android:name="category"
-            app:argType="com.hadi.android.custom.dictionary.database.model.CategoryEntity" />
+            app:argType="com.hadi.android.core.doman.Category" />
         <action
             android:id="@+id/action_wordListFragment_to_addWordFragment"
             app:destination="@id/addWordFragment" />
@@ -37,6 +37,6 @@
         android:label="AddWordFragment">
         <argument
             android:name="category"
-            app:argType="com.hadi.android.custom.dictionary.database.model.CategoryEntity" />
+            app:argType="com.hadi.android.core.doman.Category" />
     </fragment>
 </navigation>

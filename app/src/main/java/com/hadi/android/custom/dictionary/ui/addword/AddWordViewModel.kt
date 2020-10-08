@@ -8,11 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.hadi.android.core.data.WordRepository
+import com.hadi.android.core.doman.Category
+import com.hadi.android.core.doman.Definition
+import com.hadi.android.core.doman.Word
 import com.hadi.android.custom.dictionary.App
-import com.hadi.android.custom.dictionary.database.model.CategoryEntity
-import com.hadi.android.custom.dictionary.database.model.DefinitionEntity
-import com.hadi.android.custom.dictionary.database.model.WordEntity
-import com.hadi.android.custom.dictionary.database.toCoreModel
 import com.hadi.android.custom.dictionary.ui.wordlist.WordListViewModel
 import com.hadi.android.custom.dictionary.ui.useful.Event
 import com.hadi.android.custom.dictionary.ui.useful.notifyObservers
@@ -26,26 +25,27 @@ class AddWordViewModel @ViewModelInject constructor(
     private val wordRepository: WordRepository
 ) : AndroidViewModel(context as App) {
 
-    val category: CategoryEntity = savedStateHandle[WordListViewModel.KEY_CATEGORY]!!
+    val category: Category = savedStateHandle[WordListViewModel.KEY_CATEGORY]!!
     var wordTitle: String = ""
-    val definitionList: MutableLiveData<MutableList<DefinitionEntity>> =
-        MutableLiveData(mutableListOf(DefinitionEntity()))
-    val insertedWord = MutableLiveData<Event<WordEntity>>()
+    val definitionList: MutableLiveData<MutableList<Definition>> =
+        MutableLiveData(mutableListOf(produceEmptyDefinition()))
+    val wordInserted = MutableLiveData<Event<Word>>()
 
-    fun onAddDefinitionClick() {
-        definitionList.value?.add(DefinitionEntity())
+    fun addDefinition() {
+        definitionList.value?.add(produceEmptyDefinition())
         definitionList.notifyObservers()
     }
 
-    fun onSaveClick() {
+    fun saveWord() {
         viewModelScope.launch(Dispatchers.IO) {
-            val word = WordEntity(title = wordTitle).apply {
-                definitionEntities.addAll(definitionList.value!!.toList())
-                categoryEntity.target = category
-            }
-            val id = wordRepository.insert(word.toCoreModel())
-            if (id != 0L) insertedWord.postValue(Event(word.apply { this.id  = id}))
+            val word = Word(0, wordTitle, category, definitionList.value!!)
+            val id = wordRepository.insert(word)
+            if (id != 0L) wordInserted.postValue(Event(word))
         }
+    }
+
+    private fun produceEmptyDefinition(): Definition {
+        return Definition(0, "", "", mutableListOf())
     }
 
 }

@@ -8,9 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.hadi.android.core.doman.Category
 import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.databinding.DialogAddCategoryBinding
-import com.hadi.android.custom.dictionary.database.model.CategoryEntity
 import com.hadi.android.custom.dictionary.ui.categorylist.CategoryListFragment
 import com.hadi.android.custom.dictionary.ui.useful.Event
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +39,7 @@ class AddCategoryDialog() : DialogFragment() {
         val binding: DialogAddCategoryBinding =
             DataBindingUtil.inflate(inflater, R.layout.dialog_add_category, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.dialog = this
+        binding.fragment = this
         binding.viewmodel = viewModel
         return binding.root
     }
@@ -49,10 +49,14 @@ class AddCategoryDialog() : DialogFragment() {
         viewModel.onCategoryInserted.observe(this, { category ->
             findNavController().previousBackStackEntry
                 ?.savedStateHandle
-                ?.getLiveData<Event<CategoryEntity>>(CategoryListFragment.KEY_LIVE_DATA_INSERTED_CATEGORY)
+                ?.getLiveData<Event<Category>>(CategoryListFragment.KEY_INSERTED_CATEGORY_LIVE_DATA)
                 ?.value = Event(category)
             findNavController().popBackStack()
         })
+    }
+
+    fun onCancelClick(){
+        findNavController().popBackStack()
     }
 
 }

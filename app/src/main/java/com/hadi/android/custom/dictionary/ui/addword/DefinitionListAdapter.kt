@@ -4,10 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.hadi.android.core.doman.Definition
 import com.hadi.android.custom.dictionary.databinding.ItemDefinitionBinding
-import com.hadi.android.custom.dictionary.database.model.DefinitionEntity
+import java.lang.IllegalArgumentException
 
-class DefinitionListAdapter(private var definitionList: MutableList<DefinitionEntity>) :
+class DefinitionListAdapter(private var definitionList: MutableList<Definition>) :
     RecyclerView.Adapter<DefinitionListAdapter.DefinitionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefinitionViewHolder {
@@ -25,7 +26,8 @@ class DefinitionListAdapter(private var definitionList: MutableList<DefinitionEn
         return definitionList.size
     }
 
-    fun setData(newList: MutableList<DefinitionEntity>) {
+    fun setData(newList: MutableList<Definition>) {
+        if (newList === definitionList) throw IllegalArgumentException("list reference passed shouldn't point to old list of this adapter!")
         val oldList = this.definitionList
         val definitionDiffUtilCallback = DefinitionDiffUtilCallback(oldList, newList)
         val diffResult = DiffUtil.calculateDiff(definitionDiffUtilCallback)
@@ -37,15 +39,15 @@ class DefinitionListAdapter(private var definitionList: MutableList<DefinitionEn
     inner class DefinitionViewHolder(val binding: ItemDefinitionBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(definition: DefinitionEntity, counter: Int) {
+        fun bind(definition: Definition, counter: Int) {
             binding.counter = counter
             binding.definition = definition
         }
     }
 
     private class DefinitionDiffUtilCallback(
-        val oldList: List<DefinitionEntity>,
-        val newList: List<DefinitionEntity>
+        val oldList: List<Definition>,
+        val newList: List<Definition>
     ) : DiffUtil.Callback() {
 
         override fun getOldListSize(): Int = oldList.size

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.hadi.android.core.doman.Word
 import com.hadi.android.custom.dictionary.R
-import com.hadi.android.custom.dictionary.database.model.WordEntity
 import com.hadi.android.custom.dictionary.ui.base.BaseFragment
 import com.hadi.android.custom.dictionary.ui.useful.Event
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,11 +17,16 @@ import kotlinx.android.synthetic.main.fragment_word_list.*
 class WordListFragment : BaseFragment() {
 
     companion object {
-        const val KEY_NEW_WORD = "KEY_NEW_WORD"
+        const val KEY_NEW_WORD_LIVE_DATA = "KEY_NEW_WORD_LIVE_DATA"
     }
 
     private val viewModel: WordListViewModel by viewModels()
-    private val wordListAdapter: WordListAdapter = WordListAdapter(mutableListOf())
+    private lateinit var wordListAdapter: WordListAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        wordListAdapter = WordListAdapter(mutableListOf())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,8 +68,8 @@ class WordListFragment : BaseFragment() {
         viewModel.wordList.observe(viewLifecycleOwner) { newList ->
             wordListAdapter.setData(newList.toMutableList())
         }
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Event<WordEntity>>(
-            KEY_NEW_WORD
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Event<Word>>(
+            KEY_NEW_WORD_LIVE_DATA
         )?.observe(viewLifecycleOwner) { newWord ->
             newWord.getContentIfNotHandled()?.let { viewModel.onNewWordInserted(it) }
         }

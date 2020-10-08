@@ -4,20 +4,18 @@ import com.hadi.android.core.data.WordDataSource
 import com.hadi.android.core.doman.Word
 import com.hadi.android.custom.dictionary.database.model.WordEntity
 import com.hadi.android.custom.dictionary.database.model.WordEntity_
-import com.hadi.android.custom.dictionary.database.toAppModel
-import com.hadi.android.custom.dictionary.database.toCoreModel
 import io.objectbox.Box
 import io.objectbox.BoxStore
 import javax.inject.Inject
 
 class WordDataSourceImp @Inject constructor(boxStore: BoxStore) : WordDataSource {
 
-    private val box: Box<WordEntity> = boxStore.boxFor(
-        WordEntity::class.java
-    )
+    private val box: Box<WordEntity> = boxStore.boxFor(WordEntity::class.java)
 
     override suspend fun insert(word: Word): Long {
-        return box.put(word.toAppModel());
+        val id = box.put(word.toAppModel());
+        if (id > 0) word.id = id
+        return id
     }
 
     override suspend fun update(word: Word): Boolean {

@@ -9,7 +9,7 @@ interface CategoryDataSource {
     suspend fun remove(category: Category) : Boolean
     suspend fun remove(id: Long) : Boolean
     suspend fun contains(id: Long) : Boolean
-    suspend fun contains(title : String) : Boolean
+    suspend fun containsTitle(title : String) : Boolean
     suspend fun get(id : Long) : Category?
     suspend fun getAll() : List<Category>
 }

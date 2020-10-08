@@ -7,7 +7,7 @@
 
         <variable
             name="category"
-            type="com.hadi.android.custom.dictionary.database.model.CategoryEntity" />
+            type="com.hadi.android.core.doman.Category" />
     </data>
 
     <androidx.cardview.widget.CardView

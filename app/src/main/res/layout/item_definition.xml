@@ -10,7 +10,7 @@
 
         <variable
             name="definition"
-            type="com.hadi.android.custom.dictionary.database.model.DefinitionEntity" />
+            type="com.hadi.android.core.doman.Definition" />
 
     </data>
 
