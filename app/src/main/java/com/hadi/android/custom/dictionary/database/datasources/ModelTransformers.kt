@@ -29,7 +29,12 @@ fun CoreDefinition.toAppModel(): DefinitionEntity {
 }
 
 fun DefinitionEntity.toCoreModel(): CoreDefinition {
-    return CoreDefinition(id, definitionText, type, exampleEntities.map { it.toCoreModel() })
+    return CoreDefinition(
+        id,
+        definitionText,
+        type,
+        exampleEntities.map { it.toCoreModel() }.toMutableList()
+    )
 }
 
 fun CoreWord.toAppModel(): WordEntity {

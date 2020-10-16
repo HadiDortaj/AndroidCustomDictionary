@@ -13,7 +13,7 @@ class TypeSpinnerAdapter(context: Context, typeList: List<String>) :
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: View = convertView ?: LayoutInflater.from(context)
-            .inflate(R.layout.spinner_item_selected, parent, false)
+            .inflate(R.layout.item_spinner_selected, parent, false)
         val txtTitle: TextView = view.findViewById(R.id.txt_definition_type_title)
         txtTitle.text = getItem(position)
         return view
@@ -21,7 +21,7 @@ class TypeSpinnerAdapter(context: Context, typeList: List<String>) :
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
         val view: View = convertView ?: LayoutInflater.from(context)
-            .inflate(R.layout.spinner_item, parent, false)
+            .inflate(R.layout.item_spinner, parent, false)
         val txtTitle: TextView = view.findViewById(R.id.txt_definition_type_title)
         txtTitle.text = getItem(position)
         return view

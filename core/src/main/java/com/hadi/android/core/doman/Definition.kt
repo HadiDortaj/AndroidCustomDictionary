@@ -6,5 +6,5 @@ data class Definition(
     var id: Long,
     var definitionText: String,
     var type: String,
-    var examples: List<Example>
+    var examples: MutableList<Example>
 ) : Serializable

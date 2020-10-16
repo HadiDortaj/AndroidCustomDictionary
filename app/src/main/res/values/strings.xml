@@ -14,4 +14,7 @@
     <string name="hint_word_title">Title</string>
     <string name="hint_definition_text">Definition</string>
     <string name="action_add_definition">Add Definition</string>
+    <string name="action_add_example">Add Example</string>
+    <string name="hint_original_example_input">Example</string>
+    <string name="hint_example_translation_input">Translation or Extra Information</string>
 </resources>
