@@ -53,7 +53,8 @@ class AddWordFragment : BaseFragment() {
 
     private fun setupRecyclerView() {
         definitionListAdapter = DefinitionListAdapter(mutableListOf())
-        rv_definition_list.adapter = definitionListAdapter
+        rcvDefinitionList.itemAnimator = null
+        rcvDefinitionList.adapter = definitionListAdapter
     }
 
     private fun setupObservers() {

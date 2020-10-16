@@ -18,11 +18,11 @@ class MainActivity : AppCompatActivity(), ToolbarContentManipulator {
     }
 
     override fun setTitle(title: String) {
-        txt_toolbar_title.text = title
+        txtToolbarTitle.text = title
     }
 
     override fun setIcon(icon: Int) {
-        img_toolbar_icon.setImageResource(icon)
+        imgToolbarIcon.setImageResource(icon)
     }
 
 }

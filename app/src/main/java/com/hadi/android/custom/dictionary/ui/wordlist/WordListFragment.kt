@@ -44,8 +44,8 @@ class WordListFragment : BaseFragment() {
     }
 
     private fun setupWordListRecyclerView() {
-        rv_word_list.itemAnimator = null
-        rv_word_list.adapter = wordListAdapter
+        rcvWordList.itemAnimator = null
+        rcvWordList.adapter = wordListAdapter
     }
 
     override fun getToolbarTitle(): String {
@@ -57,14 +57,14 @@ class WordListFragment : BaseFragment() {
     }
 
     private fun setupListeners() {
-        fab_add_word.setOnClickListener {
+        fabAddWord.setOnClickListener {
             goToAddWordFragment()
         }
     }
 
     private fun setupObservers() {
         viewModel.wordListIsEmpty.observe(viewLifecycleOwner) { wordListIsEmpty ->
-            text_empty_word_list_msg.visibility = if (wordListIsEmpty) View.VISIBLE else View.GONE
+            txtEmptyWordListMessage.visibility = if (wordListIsEmpty) View.VISIBLE else View.GONE
         }
         viewModel.wordList.observe(viewLifecycleOwner) { newList ->
             wordListAdapter.setData(newList.toMutableList())

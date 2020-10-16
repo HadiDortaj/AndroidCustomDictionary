@@ -49,7 +49,7 @@ class WordListAdapter(private val wordList: MutableList<Word>) :
 
         fun bind(word: Word) {
             binding.word = word
-            binding.txtWordDefinition.text = getStyledDefinitionsText(word)
+            binding.txtWordDefinitions.text = getStyledDefinitionsText(word)
         }
 
         private fun getStyledDefinitionsText(word: Word): CharSequence? {

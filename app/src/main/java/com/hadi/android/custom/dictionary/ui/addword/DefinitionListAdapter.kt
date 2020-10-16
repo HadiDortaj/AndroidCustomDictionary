@@ -42,19 +42,19 @@ class DefinitionListAdapter(private var definitionList: MutableList<Definition>)
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.rvExampleList.itemAnimator = null
-            binding.rvExampleList.adapter = ExampleListAdapter(mutableListOf())
+            binding.rcvExampleList.itemAnimator = null
+            binding.rcvExampleList.adapter = ExampleListAdapter(mutableListOf())
             binding.btnAddExample.setOnClickListener {
                 val definition = definitionList[adapterPosition]
                 definition.examples.add(produceEmptyExample())
-                (binding.rvExampleList.adapter as ExampleListAdapter).setData(definition.examples.toList())
+                (binding.rcvExampleList.adapter as ExampleListAdapter).setData(definition.examples.toList())
             }
         }
 
         fun bind(definition: Definition, definitionNumber: Int) {
             binding.definitionNumber = definitionNumber
             binding.definition = definition
-            val exampleListAdapter = binding.rvExampleList.adapter as ExampleListAdapter
+            val exampleListAdapter = binding.rcvExampleList.adapter as ExampleListAdapter
             exampleListAdapter.definitionNumber = definitionNumber
             exampleListAdapter.setData(definition.examples)
         }

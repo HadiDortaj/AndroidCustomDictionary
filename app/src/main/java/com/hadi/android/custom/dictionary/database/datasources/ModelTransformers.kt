@@ -15,7 +15,7 @@ fun CategoryEntity.toCoreModel(): CoreCategory {
 }
 
 fun CoreExample.toAppModel(): ExampleEntity {
-    return ExampleEntity(id, originalExample, translationOrExtraInformation)
+    return ExampleEntity(id, originalExample, extraInformation)
 }
 
 fun ExampleEntity.toCoreModel(): CoreExample {

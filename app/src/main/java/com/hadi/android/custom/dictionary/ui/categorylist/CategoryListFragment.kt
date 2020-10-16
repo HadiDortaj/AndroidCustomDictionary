@@ -44,7 +44,7 @@ class CategoryListFragment() : BaseFragment() {
         setupCategoryListRecyclerView()
         setupObservers()
 
-        fab_add_category.setOnClickListener {
+        fabAddCategory.setOnClickListener {
             goToAddCategoryFragment()
         }
     }
@@ -58,9 +58,9 @@ class CategoryListFragment() : BaseFragment() {
     }
 
     private fun setupCategoryListRecyclerView() {
-        rv_category_list.itemAnimator = null
-        rv_category_list.setHasFixedSize(true)
-        rv_category_list.adapter = categoryListAdapter
+        rcvCategoryList.itemAnimator = null
+        rcvCategoryList.setHasFixedSize(true)
+        rcvCategoryList.adapter = categoryListAdapter
     }
 
     private fun setupObservers() {
@@ -68,7 +68,7 @@ class CategoryListFragment() : BaseFragment() {
             categoryListAdapter.setData(categoryList.toMutableList())
         })
         viewModel.categoryListIsEmpty.observe(viewLifecycleOwner, { listEmpty ->
-            text_empty_category_list_msg.visibility = if (listEmpty) View.VISIBLE else View.GONE
+            txtEmptyCategoryListMessage.visibility = if (listEmpty) View.VISIBLE else View.GONE
         })
         findNavController().currentBackStackEntry
             ?.savedStateHandle

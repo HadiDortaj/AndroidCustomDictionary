@@ -50,7 +50,7 @@ class CategoryListAdapter(
         RecyclerView.ViewHolder(itemCategoryBinding.root) {
 
         init {
-            itemCategoryBinding.itemRoot.setOnClickListener {
+            itemCategoryBinding.layoutRoot.setOnClickListener {
                 onCategoryClicked(categoryList[adapterPosition])
             }
         }
