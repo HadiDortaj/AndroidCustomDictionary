@@ -127,9 +127,11 @@
 
     <style name="DefinitionEditTextStyle">
         <item name="android:background">@drawable/bg_edittext_addwordfragment_definitiontext</item>
-        <item name="android:maxLines">1</item>
         <item name="android:padding">4dp</item>
         <item name="backgroundTint">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:scrollbars">none</item>
     </style>
 
 </resources>

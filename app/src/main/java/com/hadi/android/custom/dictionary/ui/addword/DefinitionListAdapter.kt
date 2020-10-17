@@ -1,8 +1,10 @@
 package com.hadi.android.custom.dictionary.ui.addword
 
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hadi.android.core.doman.Definition
@@ -42,6 +44,23 @@ class DefinitionListAdapter(private var definitionList: MutableList<Definition>)
         RecyclerView.ViewHolder(binding.root) {
 
         init {
+            // this line is a fix to a problem of EditText's scrolling caused when
+            // nesting an EditText inside NestedScrollView and RecyclerView (problem: It was hard to scroll EditText's content).
+            binding.edtDefinitionTitle.setOnTouchListener(object : View.OnTouchListener {
+                override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+                    val inputView = view as EditText
+                    if (inputView.hasFocus()) {
+                        inputView.parent.requestDisallowInterceptTouchEvent(true)
+                        when (event!!.action and MotionEvent.ACTION_MASK) {
+                            MotionEvent.ACTION_SCROLL -> {
+                                view.parent.requestDisallowInterceptTouchEvent(false)
+                                return true
+                            }
+                        }
+                    }
+                    return false
+                }
+            })
             binding.rcvExampleList.itemAnimator = null
             binding.rcvExampleList.adapter = ExampleListAdapter(mutableListOf())
             binding.btnAddExample.setOnClickListener {
