@@ -11,9 +11,14 @@ import com.hadi.android.core.doman.Definition
 import com.hadi.android.core.doman.Example
 import com.hadi.android.custom.dictionary.databinding.ItemDefinitionBinding
 import com.hadi.android.custom.dictionary.databinding.ItemExampleBinding
+import com.hadi.android.custom.dictionary.ui.utils.enable
 
 class DefinitionListAdapter(private var definitionList: MutableList<Definition>) :
     RecyclerView.Adapter<DefinitionListAdapter.DefinitionViewHolder>() {
+
+    companion object {
+        private const val MAX_EXAMPLE_COUNT: Int = 5
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DefinitionViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -67,6 +72,7 @@ class DefinitionListAdapter(private var definitionList: MutableList<Definition>)
                 val definition = definitionList[adapterPosition]
                 definition.examples.add(produceEmptyExample())
                 (binding.rcvExampleList.adapter as ExampleListAdapter).setData(definition.examples.toList())
+                checkBtnAddExampleEnabling(definition)
             }
         }
 
@@ -80,6 +86,10 @@ class DefinitionListAdapter(private var definitionList: MutableList<Definition>)
 
         private fun produceEmptyExample(): Example {
             return Example(0, "", "")
+        }
+
+        private fun checkBtnAddExampleEnabling(definition: Definition) {
+            if (definition.examples.size == MAX_EXAMPLE_COUNT) binding.btnAddExample.enable(false)
         }
 
         private inner class ExampleListAdapter(private val exampleList: MutableList<Example>) :
