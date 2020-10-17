@@ -7,6 +7,10 @@ import com.hadi.android.custom.dictionary.ui.callbacks.ToolbarContentManipulator
 
 abstract class BaseFragment : Fragment() {
 
+    companion object {
+        const val ICON_NONE = 0
+    }
+
     private var toolbarContentManipulator: ToolbarContentManipulator? = null
 
     override fun onAttach(context: Context) {

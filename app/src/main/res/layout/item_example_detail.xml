@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="number"
+            type="Integer" />
+
+        <variable
+            name="example"
+            type="com.hadi.android.core.doman.Example" />
+    </data>
+
+
+    <LinearLayout
+        android:id="@+id/layoutRoot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:fontFamily="@string/font_family_medium"
+            android:gravity="center"
+            android:text="@{String.valueOf(number)}"
+            android:textColor="@color/colorAccent"
+            android:textSize="14sp"
+            tools:text="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:fontFamily="@string/font_family_regular"
+                android:gravity="center_vertical"
+                android:text="@{example.originalExample}"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="14sp"
+                android:visibility="@{example.originalExample.trim().isEmpty() ? View.GONE : View.VISIBLE}"
+                tools:text="Buy" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:fontFamily="@string/font_family_regular"
+                android:gravity="center_vertical"
+                android:text="@{example.extraInformation}"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="14sp"
+                android:visibility="@{example.extraInformation.trim().isEmpty() ? View.GONE : View.VISIBLE}"
+                tools:text="Buy" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

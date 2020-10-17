@@ -39,6 +39,7 @@
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:fontFamily="@string/font_family_regular"
+                android:textStyle="normal"
                 android:gravity="center_vertical"
                 android:maxLines="1"
                 android:text="@{category.title}"

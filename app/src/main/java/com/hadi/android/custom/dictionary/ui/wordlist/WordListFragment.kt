@@ -25,7 +25,9 @@ class WordListFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        wordListAdapter = WordListAdapter(mutableListOf())
+        wordListAdapter = WordListAdapter(mutableListOf()) { word ->
+            goToWordDetailsFragment(word)
+        }
     }
 
     override fun onCreateView(
@@ -43,17 +45,17 @@ class WordListFragment : BaseFragment() {
         setupWordListRecyclerView()
     }
 
-    private fun setupWordListRecyclerView() {
-        rcvWordList.itemAnimator = null
-        rcvWordList.adapter = wordListAdapter
-    }
-
     override fun getToolbarTitle(): String {
         return viewModel.category.title
     }
 
     override fun getToolbarIcon(): Int {
         return R.drawable.ic_category
+    }
+
+    private fun setupWordListRecyclerView() {
+        rcvWordList.itemAnimator = null
+        rcvWordList.adapter = wordListAdapter
     }
 
     private fun setupListeners() {
@@ -67,7 +69,7 @@ class WordListFragment : BaseFragment() {
             txtEmptyWordListMessage.visibility = if (wordListIsEmpty) View.VISIBLE else View.GONE
         }
         viewModel.wordList.observe(viewLifecycleOwner) { newList ->
-            wordListAdapter.setData(newList.toMutableList())
+            wordListAdapter.setData(newList.toList())
         }
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Event<Word>>(
             KEY_NEW_WORD_LIVE_DATA
@@ -79,6 +81,11 @@ class WordListFragment : BaseFragment() {
     private fun goToAddWordFragment() {
         val action =
             WordListFragmentDirections.actionWordListFragmentToAddWordFragment(viewModel.category)
+        findNavController().navigate(action)
+    }
+
+    private fun goToWordDetailsFragment(word: Word) {
+        val action = WordListFragmentDirections.actionWordListFragmentToWordDetailsFragment(word)
         findNavController().navigate(action)
     }
 

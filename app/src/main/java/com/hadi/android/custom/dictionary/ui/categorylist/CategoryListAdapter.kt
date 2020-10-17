@@ -35,7 +35,7 @@ class CategoryListAdapter(
         return categoryList.size
     }
 
-    fun setData(newList: MutableList<Category>) {
+    fun setData(newList: List<Category>) {
         if (newList === categoryList) throw IllegalArgumentException("list reference passed shouldn't point to old list of this adapter!")
         val oldList = this.categoryList
         val categoryDiffUtilCallback =

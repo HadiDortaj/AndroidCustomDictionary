@@ -65,7 +65,7 @@ class CategoryListFragment() : BaseFragment() {
 
     private fun setupObservers() {
         viewModel.categoryList.observe(viewLifecycleOwner, { categoryList ->
-            categoryListAdapter.setData(categoryList.toMutableList())
+            categoryListAdapter.setData(categoryList.toList())
         })
         viewModel.categoryListIsEmpty.observe(viewLifecycleOwner, { listEmpty ->
             txtEmptyCategoryListMessage.visibility = if (listEmpty) View.VISIBLE else View.GONE

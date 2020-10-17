@@ -59,7 +59,7 @@ class AddWordFragment : BaseFragment() {
 
     private fun setupObservers() {
         viewModel.definitionList.observe(viewLifecycleOwner) { newList ->
-            definitionListAdapter.setData(newList.toMutableList())
+            definitionListAdapter.setData(newList.toList())
         }
         viewModel.wordInserted.observe(viewLifecycleOwner) { newWord ->
             findNavController().previousBackStackEntry?.savedStateHandle?.getLiveData<Event<Word>>(

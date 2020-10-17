@@ -8,8 +8,9 @@
     <color name="colorAccentDark">#B32E5B</color>
     <color name="colorOnAccentDark">#F3F3F3</color>
     <color name="colorOnPrimary">#FAFAFA</color>
-    <color name="colorTextSecondary">#80212121</color>
+    <color name="hintTextColor">#80212121</color>
     <color name="colorTextPrimary">#212121</color>
+    <color name="textColorSecondary">#CC212121</color>
     <color name="colorBackground">#F3F3F3</color>
     <color name="colorListItemBackground">#FFFFFF</color>
     <color name="colorBlack">#000000</color>

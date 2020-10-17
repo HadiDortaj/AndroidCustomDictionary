@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hadi.android.core.data.CategoryRepository
 import com.hadi.android.core.doman.Category
-import com.hadi.android.custom.dictionary.ui.useful.Event
 import com.hadi.android.custom.dictionary.ui.useful.notifyObservers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

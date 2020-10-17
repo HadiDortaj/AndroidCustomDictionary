@@ -31,7 +31,7 @@
 
     <style name="HintTextStyle">
         <item name="android:fontFamily">@string/font_family_light</item>
-        <item name="android:textColor">@color/colorTextSecondary</item>
+        <item name="android:textColor">@color/hintTextColor</item>
         <item name="android:textSize">18sp</item>
     </style>
 

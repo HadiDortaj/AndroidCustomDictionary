@@ -14,8 +14,10 @@ import com.hadi.android.core.doman.Word
 import com.hadi.android.custom.dictionary.R
 import com.hadi.android.custom.dictionary.databinding.ItemWordBinding
 
-class WordListAdapter(private val wordList: MutableList<Word>) :
-    RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
+class WordListAdapter(
+    private val wordList: MutableList<Word>,
+    private val onWordClick: (word: Word) -> Unit
+) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,11 +34,11 @@ class WordListAdapter(private val wordList: MutableList<Word>) :
         return wordList.size
     }
 
-    fun setData(newList: MutableList<Word>) {
+    fun setData(newList: List<Word>) {
         if (newList === wordList) throw IllegalArgumentException("list reference passed shouldn't point to old list of this adapter!")
         val oldList = this.wordList
-        val definitionDiffUtilCallback = DefinitionDiffUtilCallback(oldList, newList)
-        val diffResult = DiffUtil.calculateDiff(definitionDiffUtilCallback)
+        val wordDiffUtilCallback = WordDiffUtilCallback(oldList, newList)
+        val diffResult = DiffUtil.calculateDiff(wordDiffUtilCallback)
         this.wordList.clear()
         this.wordList.addAll(newList)
         diffResult.dispatchUpdatesTo(this)
@@ -46,6 +48,12 @@ class WordListAdapter(private val wordList: MutableList<Word>) :
         RecyclerView.ViewHolder(binding.root) {
 
         val context: Context = binding.root.context
+
+        init {
+            binding.layoutRoot.setOnClickListener {
+                onWordClick.invoke(wordList[adapterPosition])
+            }
+        }
 
         fun bind(word: Word) {
             binding.word = word
@@ -75,7 +83,7 @@ class WordListAdapter(private val wordList: MutableList<Word>) :
         }
     }
 
-    private class DefinitionDiffUtilCallback(
+    private class WordDiffUtilCallback(
         val oldList: List<Word>,
         val newList: List<Word>
     ) : DiffUtil.Callback() {
