@@ -23,4 +23,8 @@
     <string name="action_cancel">Cancel</string>
 
     <string name="dialog_title_add_category_dialog">Create New Category</string>
+
+    <string name="error_word_title_is_empty">Word title is empty!</string>
+    <string name="error_there_is_an_empty_definition_with_non_empty_example">There is an empty definition with non-empty examples!</string>
+    <string name="error_there_should_be_at_least_one_non_empty_definition_text">There should be at least one non-empty definition text!</string>
 </resources>

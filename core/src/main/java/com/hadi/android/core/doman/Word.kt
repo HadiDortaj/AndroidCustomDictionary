@@ -6,5 +6,5 @@ data class Word(
     var id: Long,
     var title: String,
     var category: Category,
-    var definitions: List<Definition>
+    var definitions: MutableList<Definition>
 ) : Serializable

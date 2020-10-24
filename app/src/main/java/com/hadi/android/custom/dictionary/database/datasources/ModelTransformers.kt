@@ -49,6 +49,7 @@ fun WordEntity.toCoreModel(): CoreWord {
         id,
         title,
         categoryEntity.target.toCoreModel(),
-        definitionEntities.map { it.toCoreModel() })
+        definitionEntities.map { it.toCoreModel() }.toMutableList()
+    )
 }
 

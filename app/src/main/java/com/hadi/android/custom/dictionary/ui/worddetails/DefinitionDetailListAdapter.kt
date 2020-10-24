@@ -47,7 +47,8 @@ class DefinitionDetailListAdapter(private val definitionList: MutableList<Defini
 
         fun bind(definition: Definition) {
             binding.definition = definition
-            binding.rcvDetailExampleList.adapter = ExampleDetailListAdapter(definition.examples)
+            binding.rcvDetailExampleList.adapter =
+                ExampleDetailListAdapter(definition.examples.toMutableList())
         }
 
         private inner class ExampleDetailListAdapter(private val exampleList: MutableList<Example>) :
